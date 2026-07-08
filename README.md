@@ -35,3 +35,6 @@ The sender domain/address must be verified in Resend.
 - male faces preserved in the High Noon image
 
 - added three new activation images: Big K consumers, street food vendor, and dessert vendor
+
+- restored High Noon campaign poster and reward unlock image
+- removed Big K couple image
