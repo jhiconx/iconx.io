@@ -1,20 +1,31 @@
-# Iconx.io Vercel Contact Capture
+# Iconx.io Vercel Site
 
-## Files
-- `index.html` — updated website with ChatGPT-style prompt capture
-- `api/contact.js` — Vercel serverless email handler
-- `vercel.json` — Vercel function configuration
+Updated static site for Iconx.io with:
+
+- no phone number on-site
+- separate Retail Activation / Endcap section
+- separate One4One Sampling section
+- prompt-only contact capture modal
+- Vercel serverless contact handler
+- attached campaign and lifestyle images packaged in `assets/`
+
+## Files to upload
+- `index.html`
+- `vercel.json`
+- `README.md`
+- `api/contact.js`
+- `assets/`
 
 ## Required Vercel environment variables
-In Vercel, open **Project → Settings → Environment Variables** and add:
+Set these in Vercel Project Settings:
 
-- `RESEND_API_KEY` — your Resend API key
-- `CONTACT_FROM_EMAIL` — for example: `Iconx.io Website <website@iconx.io>`
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL`
 
-The sending address/domain must be verified in Resend.
+Example sender:
+`Iconx.io Website <website@iconx.io>`
 
-After adding the variables, redeploy the project.
+The sender domain/address must be verified in Resend.
 
-
-## Prompt-only capture
-All lead information is entered in one prompt field and organized into the email summary.
+- photo captions removed
+- wide brand-ambassador image uses a face-safe contained layout

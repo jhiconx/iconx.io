@@ -3,78 +3,178 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Iconx.io — a registered GFT Rewards Agency delivering real-time rewards and verified One4One product sampling." />
-  <title>Iconx.io | Rewards & Verified Sampling</title>
+  <meta name="description" content="Iconx.io — a registered GFT Rewards Agency delivering retail activation, real-time rewards and verified One4One product sampling." />
+  <title>Iconx.io | Retail Activation, Rewards & Sampling</title>
   <style>
     :root{
       --bg:#050915;--panel:#0b1222;--panel2:#101a2e;--text:#f7f9ff;--muted:#aeb8cc;
-      --cyan:#10c8ff;--blue:#3886ff;--violet:#8d55ff;--pink:#ec39bc;--lime:#9cff14;
-      --line:rgba(130,160,215,.20);--shadow:0 24px 70px rgba(0,0,0,.38);
-      --radius:22px;--max:1180px;
+      --cyan:#10c8ff;--blue:#3886ff;--violet:#8d55ff;--pink:#ec39bc;--line:rgba(130,160,215,.20);
+      --shadow:0 24px 70px rgba(0,0,0,.38);--radius:22px;--max:1200px;
     }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
-      radial-gradient(circle at 75% 8%,rgba(110,55,255,.18),transparent 24%),
-      radial-gradient(circle at 25% 20%,rgba(0,163,255,.14),transparent 25%),var(--bg);color:var(--text);line-height:1.55;overflow-x:hidden}
-    a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
+      radial-gradient(circle at 78% 8%,rgba(110,55,255,.18),transparent 24%),
+      radial-gradient(circle at 25% 20%,rgba(0,163,255,.14),transparent 25%),var(--bg);
+      color:var(--text);line-height:1.55;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
     .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:#8ddfff;font-weight:800}
     .gradient-text{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-    header{position:sticky;top:0;z-index:20;background:rgba(5,9,21,.76);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .glass{background:linear-gradient(180deg,rgba(16,27,48,.76),rgba(8,15,29,.88));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
+    header{position:sticky;top:0;z-index:20;background:rgba(5,9,21,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
     nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}.brand img{width:48px;height:48px;border-radius:14px;object-fit:cover;box-shadow:0 0 28px rgba(31,154,255,.32)}
-    .brand strong{display:block;font-size:1.35rem;line-height:1}.brand small{display:block;color:#d7deed;margin-top:6px;font-size:.75rem}
-    .navlinks{display:flex;gap:28px;color:#d6dcec;font-size:.92rem}.navlinks a:hover{color:#6edfff}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+    .brand img{width:48px;height:48px;border-radius:14px;object-fit:cover;box-shadow:0 0 28px rgba(31,154,255,.32)}
+    .brand strong{display:block;font-size:1.35rem;line-height:1}
+    .brand small{display:block;color:#d7deed;margin-top:6px;font-size:.75rem}
+    .navlinks{display:flex;gap:24px;color:#d6dcec;font-size:.92rem}
+    .navlinks a:hover{color:#6edfff}
     .button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 20px;border-radius:12px;font-weight:800;border:1px solid transparent;transition:.22s ease;cursor:pointer}
     .button.primary{background:linear-gradient(100deg,var(--pink),var(--violet),var(--cyan));box-shadow:0 14px 32px rgba(69,89,255,.24)}
-    .button.secondary{border-color:#30bfff;background:rgba(7,17,35,.72)}.button:hover{transform:translateY(-2px)}
+    .button.secondary{border-color:#30bfff;background:rgba(7,17,35,.72)}
+    .button:hover{transform:translateY(-2px)}
     .menu{display:none;background:none;border:0;color:white;font-size:1.5rem}
-    .hero{padding:82px 0 60px;position:relative}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:72px;align-items:center}
-    h1{font-size:clamp(2.7rem,6vw,5.2rem);line-height:1.02;letter-spacing:-.055em;margin:16px 0 24px;max-width:760px}
-    .lead{font-size:1.08rem;color:var(--muted);max-width:650px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:31px}
-    .trust-row{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;color:#d8e0ef;font-size:.86rem}.trust-row span{display:flex;align-items:center;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(var(--cyan),var(--pink));box-shadow:0 0 12px var(--cyan)}
-    .logo-stage{position:relative;text-align:center}.logo-glow{position:absolute;inset:12% 6%;background:linear-gradient(120deg,rgba(0,180,255,.55),rgba(221,29,255,.55));filter:blur(54px);opacity:.6;border-radius:40%}
-    .hero-logo{position:relative;width:min(100%,390px);aspect-ratio:1;border-radius:28%;object-fit:cover;box-shadow:var(--shadow);border:1px solid rgba(139,161,224,.22)}
+    .hero{padding:82px 0 60px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:70px;align-items:center}
+    h1{font-size:clamp(2.8rem,6vw,5.2rem);line-height:1.02;letter-spacing:-.055em;margin:16px 0 24px;max-width:760px}
+    .lead{font-size:1.08rem;color:var(--muted);max-width:680px}
+    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:31px}
+    .trust-row{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;color:#d8e0ef;font-size:.86rem}
+    .trust-row span{display:flex;align-items:center;gap:8px}
+    .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(var(--cyan),var(--pink));box-shadow:0 0 12px var(--cyan)}
+    .logo-stage{position:relative;text-align:center}
+    .logo-glow{position:absolute;inset:12% 6%;background:linear-gradient(120deg,rgba(0,180,255,.55),rgba(221,29,255,.55));filter:blur(54px);opacity:.6;border-radius:40%}
+    .hero-logo{position:relative;width:min(100%,390px);aspect-ratio:1;border-radius:28%;object-fit:cover;box-shadow:var(--shadow);border:1px solid rgba(139,161,224,.22);margin:0 auto}
     .logo-stage h2{font-size:2.4rem;margin:10px 0 0}.logo-stage p{margin:0;color:#e5e9f5;font-weight:700}
-    section{padding:74px 0}.section-head{text-align:center;max-width:760px;margin:0 auto 36px}.section-head h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.035em;margin:9px 0 12px}.section-head p{color:var(--muted)}
-    .glass{background:linear-gradient(180deg,rgba(16,27,48,.76),rgba(8,15,29,.88));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
-    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;padding:16px}.card{padding:26px 22px;min-height:220px}.icon{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;border:1px solid #9c4fff;background:linear-gradient(145deg,rgba(240,48,193,.16),rgba(0,197,255,.14));font-size:1.45rem;margin-bottom:20px;box-shadow:inset 0 0 22px rgba(64,118,255,.13)}
-    .card h3{margin:0 0 8px;font-size:1.04rem}.card p{margin:0;color:var(--muted);font-size:.92rem}
-    .one4one{overflow:hidden;position:relative}.one4one:before{content:"";position:absolute;right:-100px;top:-130px;width:420px;height:420px;border-radius:50%;background:rgba(236,57,188,.16);filter:blur(60px)}
-    .one-grid{display:grid;grid-template-columns:1fr;align-items:stretch}        .one-copy{padding:50px;position:relative}.one-copy h2{font-size:clamp(2.1rem,4vw,3.8rem);line-height:1.04;margin:10px 0 20px}.one-copy p{color:var(--muted)}
-    .steps{display:grid;gap:12px;margin-top:26px}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(8,15,29,.58)}.step b{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--cyan))}
+    section{padding:78px 0}
+    .section-head{text-align:center;max-width:780px;margin:0 auto 38px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.035em;margin:9px 0 12px}
+    .section-head p{color:var(--muted)}
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;padding:16px}
+    .card{padding:26px 22px;min-height:220px}
+    .icon{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;border:1px solid #9c4fff;background:linear-gradient(145deg,rgba(240,48,193,.16),rgba(0,197,255,.14));font-size:1.45rem;margin-bottom:20px;box-shadow:inset 0 0 22px rgba(64,118,255,.13)}
+    .card h3{margin:0 0 8px;font-size:1.04rem}
+    .card p{margin:0;color:var(--muted);font-size:.92rem}
 
-    .endcap{margin:0 0 34px;padding:30px;border:1px solid rgba(76,197,255,.34);border-radius:18px;background:
-      linear-gradient(135deg,rgba(13,49,86,.72),rgba(47,20,79,.66));box-shadow:0 22px 55px rgba(0,0,0,.28);position:relative;overflow:hidden}
-    .endcap:after{content:"";position:absolute;right:-70px;top:-90px;width:250px;height:250px;border-radius:50%;background:rgba(236,57,188,.18);filter:blur(46px)}
-    .endcap>*{position:relative;z-index:1}.endcap h2{font-size:clamp(2rem,3.7vw,3.35rem);line-height:1.04;margin:9px 0 16px}
-    .endcap-intro{font-size:1.02rem;color:#dce5f5!important;max-width:780px}
-    .endcap-highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
-    .endcap-item{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(5,11,24,.46)}
-    .endcap-item strong{display:block;margin-bottom:4px;color:#fff}.endcap-item span{display:block;color:var(--muted);font-size:.88rem}
-    .built-for{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
-    .built-for h3{margin:0 0 14px;font-size:1.02rem;color:#fff}.built-for ul{margin:0;padding-left:19px;display:grid;gap:9px;color:#dce5f5}
-    .built-for li::marker{color:var(--cyan)}
+    .activation-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start}
+    .activation-panel{padding:34px;position:relative;overflow:hidden}
+    .activation-panel:after{content:"";position:absolute;right:-80px;top:-70px;width:240px;height:240px;border-radius:50%;background:rgba(236,57,188,.16);filter:blur(48px)}
+    .activation-panel > *{position:relative;z-index:1}
+    .activation-panel h2{font-size:clamp(2rem,3.9vw,3.5rem);line-height:1.05;margin:8px 0 14px}
+    .activation-panel p{color:var(--muted)}
+    .highlight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+    .highlight{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(5,11,24,.42)}
+    .highlight strong{display:block;margin-bottom:5px}
+    .highlight span{display:block;color:var(--muted);font-size:.88rem}
+    .activation-side{display:grid;gap:14px}
+    .activation-side .mini-card{padding:20px}
+    .activation-side h3{margin:0 0 12px;font-size:1rem}
+    .activation-side ul{margin:0;padding-left:19px;color:#dce5f5;display:grid;gap:9px}
+    .activation-side li::marker{color:var(--cyan)}
+    .campaign-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .campaign-tile{position:relative;overflow:hidden;border-radius:18px;min-height:200px;border:1px solid var(--line)}
+    .campaign-tile img{width:100%;height:100%;object-fit:cover}
+    
 
-    .sampling-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.stat{padding:18px;border-top:1px solid rgba(87,192,255,.55)}.stat strong{display:block;font-size:1.45rem;color:#fff}.stat span{font-size:.82rem;color:var(--muted)}
-    .stakeholders,.industries{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.industry-grid{grid-template-columns:repeat(3,1fr)}
-    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.process-card{padding:28px;text-align:center;position:relative}.process-card .num{margin:0 auto 18px;width:48px;height:48px;border:1px solid var(--pink);border-radius:50%;display:grid;place-items:center;color:#8de5ff;font-size:1.2rem;font-weight:800}.process-card p{color:var(--muted);font-size:.9rem}
-    .cta{padding:44px;display:flex;justify-content:space-between;gap:30px;align-items:center;background:linear-gradient(105deg,rgba(0,103,255,.35),rgba(130,30,255,.42),rgba(238,36,179,.34));position:relative;overflow:hidden}.cta h2{font-size:2rem;margin:0 0 7px}.cta p{margin:0;color:#dce4f5}
-    footer{border-top:1px solid var(--line);padding:50px 0 28px;color:#9eabc3}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:38px}.footer-grid h4{color:#fff;margin-top:0}.footer-grid a{display:block;margin:8px 0;font-size:.9rem}.legal{border-top:1px solid var(--line);margin-top:35px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:.8rem}
+    .sampling-shell{padding:34px;position:relative;overflow:hidden}
+    .sampling-shell:before{content:"";position:absolute;left:-100px;bottom:-110px;width:340px;height:340px;border-radius:50%;background:rgba(16,200,255,.12);filter:blur(60px)}
+    .sampling-shell > *{position:relative;z-index:1}
+    .sampling-top{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:center;margin-bottom:28px}
+    .sampling-logo-panel{padding:28px;border:1px solid var(--line);border-radius:20px;background:rgba(4,9,18,.64)}
+    .sampling-logo-panel img{max-height:160px;margin-bottom:18px;object-fit:contain}
+    .sampling-logo-panel h3{margin:0 0 8px;font-size:1.45rem}
+    .sampling-logo-panel p{margin:0;color:var(--muted)}
+    .sampling-copy h2{font-size:clamp(2rem,4vw,3.25rem);line-height:1.05;margin:8px 0 14px}
+    .sampling-copy p{color:var(--muted)}
+    .sampling-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .sampling-pills span{padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(8,15,29,.55);font-size:.84rem}
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0 28px}
+    .step{padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(8,15,29,.58)}
+    .step b{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--cyan));margin-bottom:12px}
+    .step strong{display:block;margin-bottom:5px}
+    .step span{display:block;color:var(--muted);font-size:.9rem}
+    .gallery-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:16px}
+    .gallery-main{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:170px;gap:16px}
+    .gallery-side{display:grid;grid-auto-rows:170px;gap:16px}
+    .shot{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#06101f}
+    .shot img{width:100%;height:100%;object-fit:cover}.shot.ambassador{background:radial-gradient(circle at center,rgba(55,84,135,.28),rgba(5,9,21,.98))}.shot.ambassador img{object-fit:contain;object-position:center center;padding:8px}
+    .shot.tall{grid-row:span 2}
+    .shot.wide{grid-column:span 2}
+    
+    .promo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+    .promo-card{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:rgba(7,14,27,.78)}
+    .promo-card img{width:100%;aspect-ratio:4/5;object-fit:cover}
+    
+    
+    
+
+    .stakeholders,.industries{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .industry-grid{grid-template-columns:repeat(3,1fr)}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .process-card{padding:28px;text-align:center;position:relative}
+    .process-card .num{margin:0 auto 18px;width:48px;height:48px;border:1px solid var(--pink);border-radius:50%;display:grid;place-items:center;color:#8de5ff;font-size:1.2rem;font-weight:800}
+    .process-card p{color:var(--muted);font-size:.9rem}
+    .cta{padding:44px;display:flex;justify-content:space-between;gap:30px;align-items:center;background:linear-gradient(105deg,rgba(0,103,255,.35),rgba(130,30,255,.42),rgba(238,36,179,.34));position:relative;overflow:hidden}
+    .cta h2{font-size:2rem;margin:0 0 7px}.cta p{margin:0;color:#dce4f5}
+    footer{border-top:1px solid var(--line);padding:50px 0 28px;color:#9eabc3}
+    .footer-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:38px}
+    .footer-grid h4{color:#fff;margin-top:0}.footer-grid a{display:block;margin:8px 0;font-size:.9rem}
+    .legal{border-top:1px solid var(--line);margin-top:35px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:.8rem}
 
     .contact-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(1,4,12,.78);backdrop-filter:blur(12px)}
-    .contact-modal.open{display:flex}.contact-shell{width:min(100%,820px);max-height:92vh;overflow:auto;background:#f7f7f8;color:#202123;border-radius:22px;box-shadow:0 35px 100px rgba(0,0,0,.58)}
-    .contact-top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #e5e5e5}.contact-top strong{font-size:1rem}.contact-close{border:0;background:#ececf1;color:#202123;width:36px;height:36px;border-radius:10px;font-size:1.35rem;cursor:pointer}
-    .contact-body{padding:34px 34px 28px}.assistant-message{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;margin-bottom:24px}.assistant-avatar{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#111827;color:white;font-weight:900}.assistant-copy h2{font-size:1.45rem;line-height:1.3;margin:0 0 8px;letter-spacing:-.025em}.assistant-copy p{margin:0;color:#565869}
-    .prompt-card{border:1px solid #d9d9e3;background:white;border-radius:18px;padding:16px;box-shadow:0 10px 35px rgba(0,0,0,.06)}.prompt-input{width:100%;min-height:150px;border:0;outline:0;resize:vertical;font:inherit;font-size:1rem;line-height:1.55;color:#202123;background:transparent}
-    .prompt-suggestions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}.prompt-chip{border:1px solid #d4d4dd;background:#f7f7f8;border-radius:999px;padding:8px 11px;font-size:.82rem;color:#444654;cursor:pointer}.prompt-chip:hover{background:#ececf1}
-    .prompt-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding-top:13px;border-top:1px solid #ececf1}.voice-button{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;color:#565869;font-weight:700;cursor:pointer;padding:8px}.voice-button.listening{color:#b42318}.submit-contact{border:0;border-radius:11px;background:#111827;color:white;padding:11px 18px;font-weight:800;cursor:pointer}.submit-contact:disabled{opacity:.5;cursor:not-allowed}
-    
-    .contact-note{font-size:.76rem;color:#77798a;margin:10px 2px 0}.contact-status{display:none;margin-top:16px;padding:14px;border-radius:12px;font-size:.92rem}.contact-status.show{display:block}.contact-status.success{background:#e8f7ee;color:#176b3a}.contact-status.error{background:#fdecec;color:#9b1c1c}
-    .summary-preview{display:none;margin-top:18px;padding:18px;border:1px solid #d9d9e3;border-radius:14px;background:white}.summary-preview.show{display:block}.summary-preview h3{margin:0 0 12px;font-size:1rem}.summary-grid{display:grid;grid-template-columns:150px 1fr;gap:8px 14px;font-size:.88rem}.summary-grid b{color:#565869}.summary-grid span{white-space:pre-wrap}
-    @media(max-width:620px){.contact-body{padding:24px 18px}.summary-grid{grid-template-columns:1fr}.prompt-actions{align-items:stretch;flex-direction:column}.voice-button,.submit-contact{width:100%;justify-content:center}}
+    .contact-modal.open{display:flex}
+    .contact-shell{width:min(100%,820px);max-height:92vh;overflow:auto;background:#f7f7f8;color:#202123;border-radius:22px;box-shadow:0 35px 100px rgba(0,0,0,.58)}
+    .contact-top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #e5e5e5}
+    .contact-top strong{font-size:1rem}
+    .contact-close{border:0;background:#ececf1;color:#202123;width:36px;height:36px;border-radius:10px;font-size:1.35rem;cursor:pointer}
+    .contact-body{padding:34px 34px 28px}
+    .assistant-message{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;margin-bottom:24px}
+    .assistant-avatar{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#111827;color:white;font-weight:900}
+    .assistant-copy h2{font-size:1.45rem;line-height:1.3;margin:0 0 8px;letter-spacing:-.025em}
+    .assistant-copy p{margin:0;color:#565869}
+    .prompt-card{border:1px solid #d9d9e3;background:white;border-radius:18px;padding:16px;box-shadow:0 10px 35px rgba(0,0,0,.06)}
+    .prompt-input{width:100%;min-height:150px;border:0;outline:0;resize:vertical;font:inherit;font-size:1rem;line-height:1.55;color:#202123;background:transparent}
+    .prompt-suggestions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+    .prompt-chip{border:1px solid #d4d4dd;background:#f7f7f8;border-radius:999px;padding:8px 11px;font-size:.82rem;color:#444654;cursor:pointer}
+    .prompt-chip:hover{background:#ececf1}
+    .prompt-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding-top:13px;border-top:1px solid #ececf1}
+    .voice-button{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;color:#565869;font-weight:700;cursor:pointer;padding:8px}
+    .voice-button.listening{color:#b42318}
+    .submit-contact{border:0;border-radius:11px;background:#111827;color:white;padding:11px 18px;font-weight:800;cursor:pointer}
+    .submit-contact:disabled{opacity:.5;cursor:not-allowed}
+    .contact-note{font-size:.76rem;color:#77798a;margin:10px 2px 0}
+    .contact-status{display:none;margin-top:16px;padding:14px;border-radius:12px;font-size:.92rem}
+    .contact-status.show{display:block}.contact-status.success{background:#e8f7ee;color:#176b3a}.contact-status.error{background:#fdecec;color:#9b1c1c}
+    .summary-preview{display:none;margin-top:18px;padding:18px;border:1px solid #d9d9e3;border-radius:14px;background:white}
+    .summary-preview.show{display:block}.summary-preview h3{margin:0 0 12px;font-size:1rem}
+    .summary-grid{display:grid;grid-template-columns:170px 1fr;gap:8px 14px;font-size:.88rem}
+    .summary-grid b{color:#565869}.summary-grid span{white-space:pre-wrap}
 
-    @media(max-width:900px){.endcap-highlights{grid-template-columns:1fr}.navlinks,.nav-cta{display:none}.menu{display:block}.hero-grid,.one-grid{grid-template-columns:1fr}.logo-stage{order:-1}.hero-logo{max-width:300px}.features,.stakeholders,.process{grid-template-columns:repeat(2,1fr)}.industry-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.one-copy{padding:35px}.sampling-stats{grid-template-columns:1fr}.cta{align-items:flex-start;flex-direction:column}}
-    @media(max-width:590px){nav{height:68px}.brand small{font-size:.66rem}.hero{padding-top:45px}.features,.stakeholders,.process,.industry-grid{grid-template-columns:1fr}.card{min-height:auto}.one-copy{padding:28px 22px}.cta{padding:28px}.footer-grid{grid-template-columns:1fr}.legal{flex-direction:column}.navlinks.open{display:flex;position:absolute;left:0;right:0;top:68px;flex-direction:column;padding:22px;background:#070d1a;border-bottom:1px solid var(--line)}}
+    @media(max-width:980px){
+      .navlinks,.nav-cta{display:none}.menu{display:block}
+      .hero-grid,.activation-grid,.sampling-top,.gallery-grid{grid-template-columns:1fr}
+      .features,.stakeholders,.process,.promo-row{grid-template-columns:repeat(2,1fr)}
+      .industry-grid,.highlight-grid,.campaign-strip{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .cta{align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:640px){
+      nav{height:68px}
+      .navlinks.open{display:flex;position:absolute;left:0;right:0;top:68px;flex-direction:column;padding:22px;background:#070d1a;border-bottom:1px solid var(--line)}
+      .brand small{font-size:.66rem}
+      .hero{padding-top:45px}
+      .features,.stakeholders,.process,.industry-grid,.highlight-grid,.campaign-strip,.steps-grid,.promo-row,.gallery-main{grid-template-columns:1fr}
+      .gallery-main,.gallery-side{grid-auto-rows:auto}
+      .shot.wide,.shot.tall{grid-column:auto;grid-row:auto}
+      .card{min-height:auto}
+      .contact-body{padding:24px 18px}
+      .summary-grid{grid-template-columns:1fr}
+      .prompt-actions{align-items:stretch;flex-direction:column}
+      .voice-button,.submit-contact{width:100%;justify-content:center}
+      .footer-grid{grid-template-columns:1fr}
+      .legal{flex-direction:column}
+    }
   </style>
 </head>
 <body>
@@ -84,52 +184,75 @@
       <img src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io logo" />
       <span><strong>Iconx.io</strong><small>A registered GFT Rewards Agency</small></span>
     </a>
-    <div class="navlinks" id="navlinks"><a href="#solutions">Solutions</a><a href="#sampling">One4One Sampling</a><a href="#process">How It Works</a><a href="#industries">Industries</a><a href="#contact">Contact</a></div>
-    <a class="button primary nav-cta open-contact" href="#contact">Get Started</a><button class="menu" aria-label="Open menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#solutions">Solutions</a>
+      <a href="#retail-activation">Retail Activation</a>
+      <a href="#sampling">One4One Sampling</a>
+      <a href="#process">How It Works</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="button primary nav-cta open-contact" href="#contact">Get Started</a>
+    <button class="menu" aria-label="Open menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
   </nav></div>
 </header>
 
 <main id="home">
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">Rewards • Sampling • Engagement</div>
-      <h1>Real-Time Rewards.<br>Verified Sampling.<br>Stronger <span class="gradient-text">Growth.</span></h1>
-      <p class="lead">Iconx.io helps brands, retailers, agencies, and partners build measurable customer engagement through real-time rewards, new product distribution, endcaps and verified One4One product sampling.</p>
-      <div class="actions"><a class="button primary open-contact" href="#contact">Partner With Us</a><a class="button secondary" href="#sampling">Explore One4One →</a></div>
-      <div class="trust-row"><span><i class="dot"></i>Real-time reward delivery</span><span><i class="dot"></i>Verified product sampling</span><span><i class="dot"></i>GFT Rewards technology</span></div>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Rewards • Retail Activation • Sampling</div>
+        <h1>Real-Time Rewards.<br>Retail Activation.<br>Verified <span class="gradient-text">Sampling.</span></h1>
+        <p class="lead">Iconx.io helps brands, retailers, agencies, and partners build measurable customer engagement through real-time rewards, dedicated grocery endcaps, and One4One product sampling.</p>
+        <div class="actions">
+          <a class="button primary open-contact" href="#contact">Partner With Us</a>
+          <a class="button secondary" href="#retail-activation">Explore Endcaps →</a>
+        </div>
+        <div class="trust-row">
+          <span><i class="dot"></i>Dedicated retail activation</span>
+          <span><i class="dot"></i>Verified product sampling</span>
+          <span><i class="dot"></i>GFT Rewards technology</span>
+        </div>
+      </div>
+      <div class="logo-stage">
+        <div class="logo-glow"></div>
+        <img class="hero-logo" src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io colorful X logo">
+        <h2>Iconx.io</h2>
+        <p>A registered GFT Rewards Agency</p>
+      </div>
     </div>
-    <div class="logo-stage"><div class="logo-glow"></div><img class="hero-logo" src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io colorful X logo"><h2>Iconx.io</h2><p>A registered GFT Rewards Agency</p></div>
-  </div>
-</section>
+  </section>
 
-<section id="solutions"><div class="wrap">
-  <div class="section-head"><div class="eyebrow">Platform capabilities</div><h2>Technology that connects every stakeholder</h2><p>Launch targeted experiences that connect brands, retailers, partners, and consumers with measurable outcomes.</p></div>
-  <div class="features glass">
-    <article class="card"><div class="icon">🎁</div><h3>Real-Time Rewards</h3><p>Deliver rewards at checkout or online without requiring a separate consumer app.</p></article>
-    <article class="card"><div class="icon">✓</div><h3>Verified Engagement</h3><p>Track participation through deterministic campaign rules and attributable redemption events.</p></article>
-    <article class="card"><div class="icon">↗</div><h3>Audience Growth</h3><p>Turn a sample or purchase into an ongoing relationship through permissioned follow-up.</p></article>
-    <article class="card"><div class="icon">◎</div><h3>Flexible Settlement</h3><p>Support efficient reward and partner payments through the GFT Rewards ecosystem.</p></article>
-  </div>
-</div></section>
+  <section id="solutions">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Platform capabilities</div>
+        <h2>Technology that connects every stakeholder</h2>
+        <p>Launch targeted experiences that connect brands, retailers, partners, and consumers with measurable outcomes.</p>
+      </div>
+      <div class="features glass">
+        <article class="card"><div class="icon">🎁</div><h3>Real-Time Rewards</h3><p>Deliver rewards at checkout or online without requiring a separate consumer app.</p></article>
+        <article class="card"><div class="icon">✓</div><h3>Verified Engagement</h3><p>Track participation through deterministic campaign rules and attributable redemption events.</p></article>
+        <article class="card"><div class="icon">↗</div><h3>Audience Growth</h3><p>Turn a sample or purchase into an ongoing relationship through permissioned follow-up.</p></article>
+        <article class="card"><div class="icon">◎</div><h3>Flexible Settlement</h3><p>Support efficient reward and partner payments through the GFT Rewards ecosystem.</p></article>
+      </div>
+    </div>
+  </section>
 
-<section id="sampling"><div class="wrap one4one glass">
-  <div class="one-grid">
-    <div class="one-copy">
-
-      <div class="endcap">
+  <section id="retail-activation">
+    <div class="wrap activation-grid">
+      <div class="activation-panel glass">
         <div class="eyebrow">Retail activation</div>
         <h2>Get an Endcap on Your Next Campaign</h2>
-        <p class="endcap-intro">Emerging brands can access independent grocery stores in the geography they choose, with a dedicated endcap and the in-store support needed to keep the program visible and measurable.</p>
-
-        <div class="endcap-highlights">
-          <div class="endcap-item"><strong>Dedicated Endcap</strong><span>Purpose-built shelf presence for the campaign.</span></div>
-          <div class="endcap-item"><strong>Signage Up. Placement Maintained.</strong><span>Campaign materials stay visible and the display is kept in place.</span></div>
-          <div class="endcap-item"><strong>Store-Associate Support</strong><span>Store associates know the program is running and can help support execution.</span></div>
-          <div class="endcap-item"><strong>Real-Time Sell-Through Data</strong><span>Monitor product movement and campaign performance as it happens.</span></div>
+        <p>Emerging brands can access independent grocery stores in the geography they choose, with a dedicated endcap and the in-store support needed to keep the program visible and measurable.</p>
+        <div class="highlight-grid">
+          <div class="highlight"><strong>Dedicated Endcap</strong><span>Purpose-built shelf presence for the campaign.</span></div>
+          <div class="highlight"><strong>Signage Up. Placement Maintained.</strong><span>Campaign materials stay visible and the display is kept in place.</span></div>
+          <div class="highlight"><strong>Store-Associate Support</strong><span>Store associates know the program is running and can help support execution.</span></div>
+          <div class="highlight"><strong>Real-Time Sell-Through Data</strong><span>Monitor product movement and campaign performance as it happens.</span></div>
         </div>
-
-        <div class="built-for">
+      </div>
+      <div class="activation-side">
+        <div class="mini-card glass">
           <h3>Built for:</h3>
           <ul>
             <li>Traditional brands trying to break the current model and speak directly to the shopper.</li>
@@ -139,45 +262,134 @@
             <li>Brands trying to crack a specific region or pilot for a national rollout.</li>
           </ul>
         </div>
+        <div class="campaign-strip">
+          <div class="campaign-tile">
+            <img src="assets/big-k-poster.png" alt="Big K QR code store activation poster" />
+          </div>
+          <div class="campaign-tile">
+            <img src="assets/high-noon-poster.png" alt="High Noon retail promotional poster" />
+          </div>
+          <div class="campaign-tile">
+            <img src="assets/offer-unlock.png" alt="Reward redemption screen" />
+          </div>
+        </div>
       </div>
-      <h2>Every sample tied to one verified consumer action.</h2><p>One4One is Iconx.io’s cause-driven sampling model. A consumer scans the QR code attached to a sample, completes the required action, and unlocks the product while a participating cause receives the designated contribution.</p>
-      <div class="steps">
-        <div class="step"><b>1</b><div><strong>Scan</strong><br><span>Consumer scans a unique QR code.</span></div></div>
-        <div class="step"><b>2</b><div><strong>Verify</strong><br><span>The platform confirms the required participation event and prevents duplicate redemption.</span></div></div>
-        <div class="step"><b>3</b><div><strong>Unlock & Give</strong><br><span>The consumer receives the sample and, as an option, the campaign’s designated charitable contribution is triggered.</span></div></div>
-        <div class="step"><b>4</b><div><strong>Re-engage</strong><br><span>Brands can continue the relationship with approved follow-up offers and loyalty experiences.</span></div></div>
-      </div>
-      <div class="sampling-stats"><div class="stat"><strong>One person</strong><span>Per verified sample redemption</span></div><div class="stat"><strong>Pay on action</strong><span>Campaign cost aligned to verified participation</span></div><div class="stat"><strong>Cause-driven</strong><span>Sampling can support a participating charity</span></div></div>
     </div>
-  </div>
-</div></section>
+  </section>
 
-<section><div class="wrap"><div class="section-head"><div class="eyebrow">Built for the ecosystem</div><h2>Solutions for every stakeholder</h2></div><div class="stakeholders">
-  <article class="card glass"><div class="icon">▥</div><h3>For Brands</h3><p>Launch rewards and sampling campaigns designed around measurable engagement.</p></article>
-  <article class="card glass"><div class="icon">🛒</div><h3>For Retailers</h3><p>Drive traffic, basket growth, loyalty, and repeat visits with targeted incentives.</p></article>
-  <article class="card glass"><div class="icon">◉</div><h3>For Agencies</h3><p>Build campaigns with flexible rules, reporting, and partner-ready workflows.</p></article>
-  <article class="card glass"><div class="icon">⌘</div><h3>For Partners</h3><p>Connect distribution, technology, media, and payment capabilities into one program.</p></article>
-</div></div></section>
+  <section id="sampling">
+    <div class="wrap">
+      <div class="sampling-shell glass">
+        <div class="sampling-top">
+          <div class="sampling-logo-panel">
+            <img src="https://static.wixstatic.com/media/acbdc3_34d9169ac6cf4c0bbc4e4040d96220f1~mv2.png/v1/fill/w_450,h_500,al_c,q_90,enc_avif,quality_auto/One4One%20Mobile_edited.png" alt="One4One sampling logo" />
+            <h3>One4One Sampling</h3>
+            <p>A verified sampling model designed to connect a real sample to a real person and a measurable consumer action.</p>
+          </div>
+          <div class="sampling-copy">
+            <div class="eyebrow">Verified product sampling</div>
+            <h2>Creative sampling that people actually remember.</h2>
+            <p>One4One pairs QR-based unlocks, promotional creative, live event moments, and follow-on engagement to make each sample more measurable and more valuable to the brand.</p>
+            <div class="sampling-pills">
+              <span>QR-triggered unlocks</span>
+              <span>One person per verified sample</span>
+              <span>Campus + event activations</span>
+              <span>Reward-driven follow-up</span>
+              <span>Creative campaign signage</span>
+            </div>
+          </div>
+        </div>
 
-<section id="process"><div class="wrap"><div class="section-head"><div class="eyebrow">How Iconx.io works</div><h2>From concept to measurable action</h2></div><div class="process">
-  <article class="process-card glass"><div class="num">1</div><h3>Connect</h3><p>Define the participating brand, retailer, audience, product, and partners.</p></article>
-  <article class="process-card glass"><div class="num">2</div><h3>Design</h3><p>Create campaign rules, eligible actions, reward logic, and sampling controls.</p></article>
-  <article class="process-card glass"><div class="num">3</div><h3>Activate</h3><p>Launch through retail, campus, event, digital, or partner channels.</p></article>
-  <article class="process-card glass"><div class="num">4</div><h3>Measure</h3><p>Track participation, redemption, follow-up engagement, and partner outcomes.</p></article>
-</div></div></section>
+        <div class="steps-grid">
+          <div class="step"><b>1</b><strong>Promote</strong><span>Use posters, signage, and social-ready creative to invite people in.</span></div>
+          <div class="step"><b>2</b><strong>Scan</strong><span>The consumer scans a QR code tied to the offer, product, or event.</span></div>
+          <div class="step"><b>3</b><strong>Unlock</strong><span>The platform verifies the action and unlocks the sample or reward.</span></div>
+          <div class="step"><b>4</b><strong>Re-engage</strong><span>Keep the relationship going with future offers, content, and loyalty experiences.</span></div>
+        </div>
 
-<section id="industries"><div class="wrap"><div class="section-head"><div class="eyebrow">Flexible applications</div><h2>Rewards and sampling across industries</h2></div><div class="industries industry-grid">
-  <article class="card glass"><div class="icon">🛍</div><h3>Retail & Grocery</h3><p>Checkout rewards, targeted offers, and verified in-store experiences.</p></article>
-  <article class="card glass"><div class="icon">◇</div><h3>Consumer Products</h3><p>Sampling, trial, conversion, retention, and brand advocacy.</p></article>
-  <article class="card glass"><div class="icon">🎓</div><h3>College & Campus</h3><p>Reach student audiences through controlled, measurable activations.</p></article>
-  <article class="card glass"><div class="icon">✈</div><h3>Travel & Hospitality</h3><p>Guest incentives, destination rewards, and partner-funded experiences.</p></article>
-  <article class="card glass"><div class="icon">♡</div><h3>Health & Wellness</h3><p>Support approved behaviors with relevant education and incentives.</p></article>
-  <article class="card glass"><div class="icon">▶</div><h3>Media & Entertainment</h3><p>Connect purchases and participation to content and digital rewards.</p></article>
-</div></div></section>
+        <div class="gallery-grid">
+          <div class="gallery-main">
+            <div class="shot tall"><img src="assets/campus-can.jpg" alt="Student holding a promotional beverage sample outdoors" /></div>
+            <div class="shot"><img src="assets/ape-water-pair.jpg" alt="Two women holding Ape Water samples at an event" /></div>
+            <div class="shot"><img src="assets/ape-water-trio.jpg" alt="Three attendees holding Ape Water beverage samples" /></div>
+            <div class="shot wide ambassador"><img src="assets/bar-qr.jpg" alt="Two brand ambassadors holding a QR card and promotional flyer in a bar" /></div>
+          </div>
+          <div class="gallery-side">
+            <div class="shot"><img src="assets/offer-unlock.png" alt="Redemption confirmation screen with Ape Water offer" /></div>
+            <div class="shot"><img src="assets/high-noon-friends.jpg" alt="Two friends holding High Noon drinks inside a venue" /></div>
+            <div class="shot"><img src="assets/high-noon-poster.png" alt="High Noon special event poster" /></div>
+          </div>
+        </div>
 
-<section id="contact"><div class="wrap"><div class="cta glass"><div><div class="eyebrow">Start a campaign</div><h2>Turn attention into verified action.</h2><p>Build a real-time rewards or One4One sampling program with Iconx.io.</p></div><div class="actions" style="margin:0"><a class="button primary open-contact" href="#contact">Contact Iconx.io</a><a class="button secondary" href="tel:+13109060164">+1 310 906 0164</a></div></div></div></section>
+        <div class="promo-row">
+          <div class="promo-card">
+            <img src="assets/big-k-poster.png" alt="Food 4 Less Big K QR unlock poster" />
+          </div>
+          <div class="promo-card">
+            <img src="assets/high-noon-poster.png" alt="High Noon retail promotion creative" />
+          </div>
+          <div class="promo-card">
+            <img src="assets/offer-unlock.png" alt="Offer unlock confirmation screen" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Built for the ecosystem</div><h2>Solutions for every stakeholder</h2></div>
+      <div class="stakeholders">
+        <article class="card glass"><div class="icon">▥</div><h3>For Brands</h3><p>Launch rewards and sampling campaigns designed around measurable engagement.</p></article>
+        <article class="card glass"><div class="icon">🛒</div><h3>For Retailers</h3><p>Drive traffic, basket growth, loyalty, and repeat visits with targeted incentives.</p></article>
+        <article class="card glass"><div class="icon">◉</div><h3>For Agencies</h3><p>Build campaigns with flexible rules, reporting, and partner-ready workflows.</p></article>
+        <article class="card glass"><div class="icon">⌘</div><h3>For Partners</h3><p>Connect distribution, technology, media, and payment capabilities into one program.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">How Iconx.io works</div><h2>From concept to measurable action</h2></div>
+      <div class="process">
+        <article class="process-card glass"><div class="num">1</div><h3>Connect</h3><p>Define the participating brand, retailer, audience, product, and partners.</p></article>
+        <article class="process-card glass"><div class="num">2</div><h3>Design</h3><p>Create campaign rules, eligible actions, reward logic, and activation controls.</p></article>
+        <article class="process-card glass"><div class="num">3</div><h3>Activate</h3><p>Launch through retail, campus, event, digital, or partner channels.</p></article>
+        <article class="process-card glass"><div class="num">4</div><h3>Measure</h3><p>Track participation, redemption, follow-up engagement, and partner outcomes.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="industries">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Flexible applications</div><h2>Rewards and sampling across industries</h2></div>
+      <div class="industries industry-grid">
+        <article class="card glass"><div class="icon">🛍</div><h3>Retail & Grocery</h3><p>Checkout rewards, targeted offers, and verified in-store experiences.</p></article>
+        <article class="card glass"><div class="icon">◇</div><h3>Consumer Products</h3><p>Sampling, trial, conversion, retention, and brand advocacy.</p></article>
+        <article class="card glass"><div class="icon">🎓</div><h3>College & Campus</h3><p>Reach student audiences through controlled, measurable activations.</p></article>
+        <article class="card glass"><div class="icon">✈</div><h3>Travel & Hospitality</h3><p>Guest incentives, destination rewards, and partner-funded experiences.</p></article>
+        <article class="card glass"><div class="icon">♡</div><h3>Health & Wellness</h3><p>Support approved behaviors with relevant education and incentives.</p></article>
+        <article class="card glass"><div class="icon">▶</div><h3>Media & Entertainment</h3><p>Connect purchases and participation to content and digital rewards.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta glass">
+        <div>
+          <div class="eyebrow">Start a campaign</div>
+          <h2>Turn attention into verified action.</h2>
+          <p>Build a real-time rewards, retail activation, or One4One sampling program with Iconx.io.</p>
+        </div>
+        <div class="actions" style="margin:0">
+          <a class="button primary open-contact" href="#contact">Contact Iconx.io</a>
+          <a class="button secondary" href="#sampling">View One4One →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-
 
 <div class="contact-modal" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
   <div class="contact-shell">
@@ -196,7 +408,7 @@
 
       <form id="promptContactForm">
         <div class="prompt-card">
-          <textarea class="prompt-input" id="inquiry" name="inquiry" required placeholder="Example: My name is Jordan Lee and my email is jordan@brand.com. I’m the founder of an emerging beverage brand. We want to test endcaps in Southern California before a national rollout. I heard about Iconx.io through LinkedIn."></textarea>
+          <textarea class="prompt-input" id="inquiry" name="inquiry" required placeholder="Example: My name is Jordan Lee and my email is jordan@brand.com. I’m the founder of an emerging beverage brand. We want endcaps in Southern California and a One4One sampling pilot. I heard about Iconx.io through LinkedIn."></textarea>
           <div class="prompt-suggestions" id="promptSuggestions">
             <button class="prompt-chip" type="button" data-prompt="My name is: ">Tell us your name</button>
             <button class="prompt-chip" type="button" data-prompt="My email is: ">Share your email</button>
@@ -209,15 +421,12 @@
             <button class="prompt-chip" type="button" data-prompt="My preferred retailer or channel is: ">Retailer or channel</button>
             <button class="prompt-chip" type="button" data-prompt="I heard about Iconx.io through: ">How did you hear about us?</button>
           </div>
-
           <input type="text" name="website" id="websiteField" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
-
           <div class="prompt-actions">
             <button class="voice-button" id="voiceButton" type="button" title="Speak your message">🎙 Speak</button>
             <button class="submit-contact" id="submitContact" type="submit">Organize and send</button>
           </div>
         </div>
-
         <p class="contact-note">Include your name, email, company, what you want to do, and how you heard about us. We’ll organize everything into a clean summary and send it to Iconx.io.</p>
         <div class="summary-preview" id="summaryPreview"></div>
         <div class="contact-status" id="contactStatus" role="status"></div>
@@ -226,12 +435,35 @@
   </div>
 </div>
 
-<footer><div class="wrap"><div class="footer-grid">
-  <div><a class="brand" href="#home"><img src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io"><span><strong>Iconx.io</strong><small>A registered GFT Rewards Agency</small></span></a><p>Real-time rewards and verified product sampling for brands, retailers, agencies, and partners.</p></div>
-  <div><h4>Solutions</h4><a href="#solutions">Rewards</a><a href="#sampling">One4One Sampling</a><a href="#process">How It Works</a></div>
-  <div><h4>Company</h4><a href="https://www.iconx.io/" target="_blank" rel="noopener">Current Website</a><a href="https://gftrewards.com" target="_blank" rel="noopener">GFT Rewards</a><a class="open-contact" href="#contact">Contact</a></div>
-  <div><h4>Get in touch</h4><a class="open-contact" href="#contact">contact@iconx.io</a><a href="tel:+13109060164">+1 310 906 0164</a><span>1718 E. Speedway Blvd. #111<br>Tucson, AZ 85719</span></div>
-</div><div class="legal"><span>© <span id="year"></span> Iconx.io. All rights reserved.</span><span>One4One is presented as an Iconx.io sampling program.</span></div></div></footer>
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#home"><img src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io"><span><strong>Iconx.io</strong><small>A registered GFT Rewards Agency</small></span></a>
+        <p>Real-time rewards, retail activation, and verified product sampling for brands, retailers, agencies, and partners.</p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <a href="#solutions">Rewards</a>
+        <a href="#retail-activation">Retail Activation</a>
+        <a href="#sampling">One4One Sampling</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="https://www.iconx.io/" target="_blank" rel="noopener">Current Website</a>
+        <a href="https://gftrewards.com" target="_blank" rel="noopener">GFT Rewards</a>
+        <a class="open-contact" href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <a class="open-contact" href="#contact">contact@iconx.io</a>
+        <span>1718 E. Speedway Blvd. #111<br>Tucson, AZ 85719</span>
+      </div>
+    </div>
+    <div class="legal"><span>© <span id="year"></span> Iconx.io. All rights reserved.</span><span>One4One is presented as an Iconx.io sampling program.</span></div>
+  </div>
+</footer>
+
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 document.querySelectorAll('#navlinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navlinks').classList.remove('open')));
@@ -276,7 +508,7 @@ function updateSuggestions() {
   document.querySelectorAll('.prompt-chip').forEach(chip => {
     const label = chip.textContent.toLowerCase();
     let hide = false;
-    if (label.includes('your name') && /(?:my name is|name:|i am|i'm)\s+/i.test(inquiry.value)) hide = true;
+    if (label.includes('your name') && /(?:my name is|name:|i am|i\'m)\s+/i.test(inquiry.value)) hide = true;
     if (label.includes('your email') && /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(inquiry.value)) hide = true;
     if (label.includes('company or brand') && /(?:company|brand|founder|owner)\b/i.test(inquiry.value)) hide = true;
     if (label.includes('linkedin') && text.includes('linkedin.com')) hide = true;
@@ -284,6 +516,7 @@ function updateSuggestions() {
     if (label === 'endcaps' && text.includes('endcap')) hide = true;
     if (label === 'both' && text.includes('sampling') && text.includes('endcap')) hide = true;
     if (label.includes('geography') && /(california|florida|texas|arizona|region|geograph|market|city|state)/.test(text)) hide = true;
+    if (label.includes('retailer or channel') && /(retailer|channel|grocery|campus|event|food 4 less|kroger|indie)/.test(text)) hide = true;
     if (label.includes('hear about us') && /(linkedin|referral|friend|conference|event|google|search|social|instagram|facebook|website|gft)/.test(text)) hide = true;
     chip.style.display = hide ? 'none' : '';
   });
@@ -354,8 +587,8 @@ function extractName(text) {
 }
 function extractCompany(text) {
   const patterns = [
-    /(?:my company|my brand|company|brand)\s+(?:is|:)\s*([^.\n]+)/i,
-    /(?:founder|owner)\s+(?:of|at)\s+([^.\n]+)/i
+    /(?:my company|my brand|company|brand)\s+(?:is|:)\s*([^\.\n]+)/i,
+    /(?:founder|owner)\s+(?:of|at)\s+([^\.\n]+)/i
   ];
   for (const pattern of patterns) {
     const match = text.match(pattern);
@@ -365,8 +598,8 @@ function extractCompany(text) {
 }
 function extractHeardAbout(text) {
   const patterns = [
-    /(?:heard about (?:iconx\.io|you)|found (?:iconx\.io|you))\s*(?:through|from|via|:)?\s*([^.\n]+)/i,
-    /referred by\s+([^.\n]+)/i
+    /(?:heard about (?:iconx\.io|you)|found (?:iconx\.io|you))\s*(?:through|from|via|:)?\s*([^\.\n]+)/i,
+    /referred by\s+([^\.\n]+)/i
   ];
   for (const pattern of patterns) {
     const match = text.match(pattern);
@@ -435,4 +668,5 @@ form.addEventListener('submit', async event => {
   }
 });
 </script>
-</body></html>
+</body>
+</html>
