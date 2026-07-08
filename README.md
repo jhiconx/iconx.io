@@ -29,3 +29,9 @@ The sender domain/address must be verified in Resend.
 
 - photo captions removed
 - wide brand-ambassador image uses a face-safe contained layout
+
+- reduced One4One photo set to a cleaner 4-image gallery
+- removed the lower signage/photo panels
+- male faces preserved in the High Noon image
+
+- added three new activation images: Big K consumers, street food vendor, and dessert vendor
