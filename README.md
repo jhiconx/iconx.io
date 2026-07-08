@@ -14,3 +14,7 @@ In Vercel, open **Project → Settings → Environment Variables** and add:
 The sending address/domain must be verified in Resend.
 
 After adding the variables, redeploy the project.
+
+
+## Prompt-only capture
+All lead information is entered in one prompt field and organized into the email summary.

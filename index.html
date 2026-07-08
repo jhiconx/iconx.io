@@ -68,10 +68,10 @@
     .prompt-card{border:1px solid #d9d9e3;background:white;border-radius:18px;padding:16px;box-shadow:0 10px 35px rgba(0,0,0,.06)}.prompt-input{width:100%;min-height:150px;border:0;outline:0;resize:vertical;font:inherit;font-size:1rem;line-height:1.55;color:#202123;background:transparent}
     .prompt-suggestions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}.prompt-chip{border:1px solid #d4d4dd;background:#f7f7f8;border-radius:999px;padding:8px 11px;font-size:.82rem;color:#444654;cursor:pointer}.prompt-chip:hover{background:#ececf1}
     .prompt-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding-top:13px;border-top:1px solid #ececf1}.voice-button{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;color:#565869;font-weight:700;cursor:pointer;padding:8px}.voice-button.listening{color:#b42318}.submit-contact{border:0;border-radius:11px;background:#111827;color:white;padding:11px 18px;font-weight:800;cursor:pointer}.submit-contact:disabled{opacity:.5;cursor:not-allowed}
-    .contact-details{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.contact-details input{width:100%;border:1px solid #d9d9e3;background:white;color:#202123;border-radius:11px;padding:12px 13px;font:inherit;outline:0}.contact-details input:focus{border-color:#6d5dfc;box-shadow:0 0 0 3px rgba(109,93,252,.12)}
+    
     .contact-note{font-size:.76rem;color:#77798a;margin:10px 2px 0}.contact-status{display:none;margin-top:16px;padding:14px;border-radius:12px;font-size:.92rem}.contact-status.show{display:block}.contact-status.success{background:#e8f7ee;color:#176b3a}.contact-status.error{background:#fdecec;color:#9b1c1c}
     .summary-preview{display:none;margin-top:18px;padding:18px;border:1px solid #d9d9e3;border-radius:14px;background:white}.summary-preview.show{display:block}.summary-preview h3{margin:0 0 12px;font-size:1rem}.summary-grid{display:grid;grid-template-columns:150px 1fr;gap:8px 14px;font-size:.88rem}.summary-grid b{color:#565869}.summary-grid span{white-space:pre-wrap}
-    @media(max-width:620px){.contact-body{padding:24px 18px}.contact-details{grid-template-columns:1fr}.summary-grid{grid-template-columns:1fr}.prompt-actions{align-items:stretch;flex-direction:column}.voice-button,.submit-contact{width:100%;justify-content:center}}
+    @media(max-width:620px){.contact-body{padding:24px 18px}.summary-grid{grid-template-columns:1fr}.prompt-actions{align-items:stretch;flex-direction:column}.voice-button,.submit-contact{width:100%;justify-content:center}}
 
     @media(max-width:900px){.endcap-highlights{grid-template-columns:1fr}.navlinks,.nav-cta{display:none}.menu{display:block}.hero-grid,.one-grid{grid-template-columns:1fr}.logo-stage{order:-1}.hero-logo{max-width:300px}.features,.stakeholders,.process{grid-template-columns:repeat(2,1fr)}.industry-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.one-copy{padding:35px}.sampling-stats{grid-template-columns:1fr}.cta{align-items:flex-start;flex-direction:column}}
     @media(max-width:590px){nav{height:68px}.brand small{font-size:.66rem}.hero{padding-top:45px}.features,.stakeholders,.process,.industry-grid{grid-template-columns:1fr}.card{min-height:auto}.one-copy{padding:28px 22px}.cta{padding:28px}.footer-grid{grid-template-columns:1fr}.legal{flex-direction:column}.navlinks.open{display:flex;position:absolute;left:0;right:0;top:68px;flex-direction:column;padding:22px;background:#070d1a;border-bottom:1px solid var(--line)}}
@@ -196,8 +196,11 @@
 
       <form id="promptContactForm">
         <div class="prompt-card">
-          <textarea class="prompt-input" id="inquiry" name="inquiry" required placeholder="Example: I’m the founder of an emerging beverage brand. We have strong DTC sales and want to test endcaps in Southern California before a national grocery rollout."></textarea>
+          <textarea class="prompt-input" id="inquiry" name="inquiry" required placeholder="Example: My name is Jordan Lee and my email is jordan@brand.com. I’m the founder of an emerging beverage brand. We want to test endcaps in Southern California before a national rollout. I heard about Iconx.io through LinkedIn."></textarea>
           <div class="prompt-suggestions" id="promptSuggestions">
+            <button class="prompt-chip" type="button" data-prompt="My name is: ">Tell us your name</button>
+            <button class="prompt-chip" type="button" data-prompt="My email is: ">Share your email</button>
+            <button class="prompt-chip" type="button" data-prompt="My company or brand is: ">Company or brand</button>
             <button class="prompt-chip" type="button" data-prompt="My LinkedIn profile is: ">Send us your LinkedIn address</button>
             <button class="prompt-chip" type="button" data-prompt="I am interested in sampling. ">Sampling</button>
             <button class="prompt-chip" type="button" data-prompt="I am interested in dedicated grocery endcaps. ">Endcaps</button>
@@ -205,14 +208,6 @@
             <button class="prompt-chip" type="button" data-prompt="The geography I want to target is: ">Target geography</button>
             <button class="prompt-chip" type="button" data-prompt="My preferred retailer or channel is: ">Retailer or channel</button>
             <button class="prompt-chip" type="button" data-prompt="I heard about Iconx.io through: ">How did you hear about us?</button>
-          </div>
-
-          <div class="contact-details">
-            <input id="contactName" name="name" autocomplete="name" placeholder="Your name" required />
-            <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="Your email" required />
-            <input id="company" name="company" autocomplete="organization" placeholder="Company or brand" />
-            <input id="phone" name="phone" autocomplete="tel" placeholder="Phone (optional)" />
-            <input id="heardAbout" name="heardAbout" placeholder="How did you hear about us?" />
           </div>
 
           <input type="text" name="website" id="websiteField" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
@@ -223,7 +218,7 @@
           </div>
         </div>
 
-        <p class="contact-note">Your message and contact information will be organized into a summary and emailed securely to Iconx.io.</p>
+        <p class="contact-note">Include your name, email, company, what you want to do, and how you heard about us. We’ll organize everything into a clean summary and send it to Iconx.io.</p>
         <div class="summary-preview" id="summaryPreview"></div>
         <div class="contact-status" id="contactStatus" role="status"></div>
       </form>
@@ -281,6 +276,9 @@ function updateSuggestions() {
   document.querySelectorAll('.prompt-chip').forEach(chip => {
     const label = chip.textContent.toLowerCase();
     let hide = false;
+    if (label.includes('your name') && /(?:my name is|name:|i am|i'm)\s+/i.test(inquiry.value)) hide = true;
+    if (label.includes('your email') && /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(inquiry.value)) hide = true;
+    if (label.includes('company or brand') && /(?:company|brand|founder|owner)\b/i.test(inquiry.value)) hide = true;
     if (label.includes('linkedin') && text.includes('linkedin.com')) hide = true;
     if (label === 'sampling' && text.includes('sampling')) hide = true;
     if (label === 'endcaps' && text.includes('endcap')) hide = true;
@@ -339,16 +337,53 @@ function extractLinkedIn(text) {
   const match = text.match(/https?:\/\/(?:www\.)?linkedin\.com\/[^\s,]+/i);
   return match ? match[0] : 'Not provided';
 }
+function extractEmail(text) {
+  const match = text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  return match ? match[0] : 'Not provided';
+}
+function extractName(text) {
+  const patterns = [
+    /(?:my name is|name:)\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})/i,
+    /(?:i am|i'm)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})/i
+  ];
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (match) return match[1].trim();
+  }
+  return 'Not provided';
+}
+function extractCompany(text) {
+  const patterns = [
+    /(?:my company|my brand|company|brand)\s+(?:is|:)\s*([^.\n]+)/i,
+    /(?:founder|owner)\s+(?:of|at)\s+([^.\n]+)/i
+  ];
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (match) return match[1].trim();
+  }
+  return 'Not provided';
+}
+function extractHeardAbout(text) {
+  const patterns = [
+    /(?:heard about (?:iconx\.io|you)|found (?:iconx\.io|you))\s*(?:through|from|via|:)?\s*([^.\n]+)/i,
+    /referred by\s+([^.\n]+)/i
+  ];
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (match) return match[1].trim();
+  }
+  return 'Not provided';
+}
 function buildSummary(data) {
+  const text = data.inquiry.trim();
   return {
-    name: data.name,
-    email: data.email,
-    company: data.company || 'Not provided',
-    phone: data.phone || 'Not provided',
-    heardAbout: data.heardAbout || 'Not provided',
-    interest: inferInterest(data.inquiry),
-    linkedin: extractLinkedIn(data.inquiry),
-    inquiry: data.inquiry.trim()
+    name: extractName(text),
+    email: extractEmail(text),
+    company: extractCompany(text),
+    heardAbout: extractHeardAbout(text),
+    interest: inferInterest(text),
+    linkedin: extractLinkedIn(text),
+    inquiry: text
   };
 }
 function renderSummary(summary) {
@@ -358,7 +393,6 @@ function renderSummary(summary) {
       <b>Name</b><span>${escapeHtml(summary.name)}</span>
       <b>Email</b><span>${escapeHtml(summary.email)}</span>
       <b>Company</b><span>${escapeHtml(summary.company)}</span>
-      <b>Phone</b><span>${escapeHtml(summary.phone)}</span>
       <b>How they heard about us</b><span>${escapeHtml(summary.heardAbout)}</span>
       <b>Interest</b><span>${escapeHtml(summary.interest)}</span>
       <b>LinkedIn</b><span>${escapeHtml(summary.linkedin)}</span>
@@ -388,7 +422,7 @@ form.addEventListener('submit', async event => {
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({...data, summary})
+      body: JSON.stringify({inquiry: data.inquiry, website: data.website, summary})
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(result.error || 'Unable to send your message.');

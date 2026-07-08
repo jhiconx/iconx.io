@@ -19,37 +19,38 @@ module.exports = async function handler(req, res) {
   const body = req.body || {};
   if (body.website) return res.status(200).json({ ok: true });
 
-  const name = clean(body.name, 150);
-  const email = clean(body.email, 250);
-  const company = clean(body.company, 250) || "Not provided";
-  const phone = clean(body.phone, 100) || "Not provided";
-  const heardAbout = clean(body.heardAbout, 500) || "Not provided";
   const inquiry = clean(body.inquiry, 8000);
   const summary = body.summary || {};
 
-  if (!name || !email || !inquiry) {
-    return res.status(400).json({ error: "Name, email and your message are required." });
+  const name = clean(summary.name, 150) || "Not provided";
+  const email = clean(summary.email, 250) || "Not provided";
+  const company = clean(summary.company, 250) || "Not provided";
+  const heardAbout = clean(summary.heardAbout, 500) || "Not provided";
+  const interest = clean(summary.interest, 200) || "Not specified";
+  const linkedin = clean(summary.linkedin, 500) || "Not provided";
+
+  if (!inquiry) {
+    return res.status(400).json({ error: "Please tell us who you are and what you want to do." });
+  }
+  if (email === "Not provided") {
+    return res.status(400).json({ error: "Please include your email address in the prompt so we can follow up." });
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return res.status(400).json({ error: "Please enter a valid email address." });
+    return res.status(400).json({ error: "Please include a valid email address in the prompt." });
   }
   if (!process.env.RESEND_API_KEY) {
     return res.status(500).json({ error: "Email delivery has not been configured yet." });
   }
 
-  const interest = clean(summary.interest, 200) || "Not specified";
-  const linkedin = clean(summary.linkedin, 500) || "Not provided";
   const submittedAt = new Date().toISOString();
-
   const emailHtml = `
     <div style="font-family:Arial,sans-serif;max-width:720px;margin:auto;color:#172033">
       <h1 style="font-size:24px;margin-bottom:6px">New Iconx.io website inquiry</h1>
       <p style="color:#667085;margin-top:0">Submitted ${escapeHtml(submittedAt)}</p>
       <table style="width:100%;border-collapse:collapse;margin:24px 0">
-        <tr><td style="padding:10px;border-bottom:1px solid #e5e7eb;font-weight:bold;width:160px">Name</td><td style="padding:10px;border-bottom:1px solid #e5e7eb">${escapeHtml(name)}</td></tr>
+        <tr><td style="padding:10px;border-bottom:1px solid #e5e7eb;font-weight:bold;width:190px">Name</td><td style="padding:10px;border-bottom:1px solid #e5e7eb">${escapeHtml(name)}</td></tr>
         <tr><td style="padding:10px;border-bottom:1px solid #e5e7eb;font-weight:bold">Email</td><td style="padding:10px;border-bottom:1px solid #e5e7eb">${escapeHtml(email)}</td></tr>
         <tr><td style="padding:10px;border-bottom:1px solid #e5e7eb;font-weight:bold">Company / Brand</td><td style="padding:10px;border-bottom:1px solid #e5e7eb">${escapeHtml(company)}</td></tr>
-        <tr><td style="padding:10px;border-bottom:1px solid #e5e7eb;font-weight:bold">Phone</td><td style="padding:10px;border-bottom:1px solid #e5e7eb">${escapeHtml(phone)}</td></tr>
         <tr><td style="padding:10px;border-bottom:1px solid #e5e7eb;font-weight:bold">How they heard about us</td><td style="padding:10px;border-bottom:1px solid #e5e7eb">${escapeHtml(heardAbout)}</td></tr>
         <tr><td style="padding:10px;border-bottom:1px solid #e5e7eb;font-weight:bold">Interest</td><td style="padding:10px;border-bottom:1px solid #e5e7eb">${escapeHtml(interest)}</td></tr>
         <tr><td style="padding:10px;border-bottom:1px solid #e5e7eb;font-weight:bold">LinkedIn</td><td style="padding:10px;border-bottom:1px solid #e5e7eb">${escapeHtml(linkedin)}</td></tr>
