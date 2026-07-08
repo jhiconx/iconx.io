@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Iconx.io — a registered GFT Rewards Agency delivering real-time rewards and verified One4One product sampling." />
+  <title>Iconx.io | Rewards & Verified Sampling</title>
+  <style>
+    :root{
+      --bg:#050915;--panel:#0b1222;--panel2:#101a2e;--text:#f7f9ff;--muted:#aeb8cc;
+      --cyan:#10c8ff;--blue:#3886ff;--violet:#8d55ff;--pink:#ec39bc;--lime:#9cff14;
+      --line:rgba(130,160,215,.20);--shadow:0 24px 70px rgba(0,0,0,.38);
+      --radius:22px;--max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+      radial-gradient(circle at 75% 8%,rgba(110,55,255,.18),transparent 24%),
+      radial-gradient(circle at 25% 20%,rgba(0,163,255,.14),transparent 25%),var(--bg);color:var(--text);line-height:1.55;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
+    .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:#8ddfff;font-weight:800}
+    .gradient-text{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+    header{position:sticky;top:0;z-index:20;background:rgba(5,9,21,.76);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}.brand img{width:48px;height:48px;border-radius:14px;object-fit:cover;box-shadow:0 0 28px rgba(31,154,255,.32)}
+    .brand strong{display:block;font-size:1.35rem;line-height:1}.brand small{display:block;color:#d7deed;margin-top:6px;font-size:.75rem}
+    .navlinks{display:flex;gap:28px;color:#d6dcec;font-size:.92rem}.navlinks a:hover{color:#6edfff}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 20px;border-radius:12px;font-weight:800;border:1px solid transparent;transition:.22s ease;cursor:pointer}
+    .button.primary{background:linear-gradient(100deg,var(--pink),var(--violet),var(--cyan));box-shadow:0 14px 32px rgba(69,89,255,.24)}
+    .button.secondary{border-color:#30bfff;background:rgba(7,17,35,.72)}.button:hover{transform:translateY(-2px)}
+    .menu{display:none;background:none;border:0;color:white;font-size:1.5rem}
+    .hero{padding:82px 0 60px;position:relative}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:72px;align-items:center}
+    h1{font-size:clamp(2.7rem,6vw,5.2rem);line-height:1.02;letter-spacing:-.055em;margin:16px 0 24px;max-width:760px}
+    .lead{font-size:1.08rem;color:var(--muted);max-width:650px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:31px}
+    .trust-row{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;color:#d8e0ef;font-size:.86rem}.trust-row span{display:flex;align-items:center;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(var(--cyan),var(--pink));box-shadow:0 0 12px var(--cyan)}
+    .logo-stage{position:relative;text-align:center}.logo-glow{position:absolute;inset:12% 6%;background:linear-gradient(120deg,rgba(0,180,255,.55),rgba(221,29,255,.55));filter:blur(54px);opacity:.6;border-radius:40%}
+    .hero-logo{position:relative;width:min(100%,390px);aspect-ratio:1;border-radius:28%;object-fit:cover;box-shadow:var(--shadow);border:1px solid rgba(139,161,224,.22)}
+    .logo-stage h2{font-size:2.4rem;margin:10px 0 0}.logo-stage p{margin:0;color:#e5e9f5;font-weight:700}
+    section{padding:74px 0}.section-head{text-align:center;max-width:760px;margin:0 auto 36px}.section-head h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.035em;margin:9px 0 12px}.section-head p{color:var(--muted)}
+    .glass{background:linear-gradient(180deg,rgba(16,27,48,.76),rgba(8,15,29,.88));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;padding:16px}.card{padding:26px 22px;min-height:220px}.icon{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;border:1px solid #9c4fff;background:linear-gradient(145deg,rgba(240,48,193,.16),rgba(0,197,255,.14));font-size:1.45rem;margin-bottom:20px;box-shadow:inset 0 0 22px rgba(64,118,255,.13)}
+    .card h3{margin:0 0 8px;font-size:1.04rem}.card p{margin:0;color:var(--muted);font-size:.92rem}
+    .one4one{overflow:hidden;position:relative}.one4one:before{content:"";position:absolute;right:-100px;top:-130px;width:420px;height:420px;border-radius:50%;background:rgba(236,57,188,.16);filter:blur(60px)}
+    .one-grid{display:grid;grid-template-columns:.88fr 1.12fr;align-items:stretch}.one-brand{padding:45px;display:flex;flex-direction:column;justify-content:center;background:#030303;min-height:480px;position:relative}
+    .one-mark{font-family:Georgia,serif;font-style:italic;font-size:clamp(5rem,12vw,9rem);line-height:.8;color:#f5eadc;letter-spacing:-.08em}.one-label{font-size:1.45rem;letter-spacing:.18em;text-transform:uppercase;margin-top:24px;color:#f5eadc}
+    .one-copy{padding:50px;position:relative}.one-copy h2{font-size:clamp(2.1rem,4vw,3.8rem);line-height:1.04;margin:10px 0 20px}.one-copy p{color:var(--muted)}
+    .steps{display:grid;gap:12px;margin-top:26px}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(8,15,29,.58)}.step b{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--cyan))}
+    .sampling-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.stat{padding:18px;border-top:1px solid rgba(87,192,255,.55)}.stat strong{display:block;font-size:1.45rem;color:#fff}.stat span{font-size:.82rem;color:var(--muted)}
+    .stakeholders,.industries{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.industry-grid{grid-template-columns:repeat(3,1fr)}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.process-card{padding:28px;text-align:center;position:relative}.process-card .num{margin:0 auto 18px;width:48px;height:48px;border:1px solid var(--pink);border-radius:50%;display:grid;place-items:center;color:#8de5ff;font-size:1.2rem;font-weight:800}.process-card p{color:var(--muted);font-size:.9rem}
+    .cta{padding:44px;display:flex;justify-content:space-between;gap:30px;align-items:center;background:linear-gradient(105deg,rgba(0,103,255,.35),rgba(130,30,255,.42),rgba(238,36,179,.34));position:relative;overflow:hidden}.cta h2{font-size:2rem;margin:0 0 7px}.cta p{margin:0;color:#dce4f5}
+    footer{border-top:1px solid var(--line);padding:50px 0 28px;color:#9eabc3}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:38px}.footer-grid h4{color:#fff;margin-top:0}.footer-grid a{display:block;margin:8px 0;font-size:.9rem}.legal{border-top:1px solid var(--line);margin-top:35px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:.8rem}
+    @media(max-width:900px){.navlinks,.nav-cta{display:none}.menu{display:block}.hero-grid,.one-grid{grid-template-columns:1fr}.logo-stage{order:-1}.hero-logo{max-width:300px}.features,.stakeholders,.process{grid-template-columns:repeat(2,1fr)}.industry-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.one-brand{min-height:300px}.one-copy{padding:35px}.sampling-stats{grid-template-columns:1fr}.cta{align-items:flex-start;flex-direction:column}}
+    @media(max-width:590px){nav{height:68px}.brand small{font-size:.66rem}.hero{padding-top:45px}.features,.stakeholders,.process,.industry-grid{grid-template-columns:1fr}.card{min-height:auto}.one-brand{padding:32px}.one-copy{padding:28px 22px}.cta{padding:28px}.footer-grid{grid-template-columns:1fr}.legal{flex-direction:column}.navlinks.open{display:flex;position:absolute;left:0;right:0;top:68px;flex-direction:column;padding:22px;background:#070d1a;border-bottom:1px solid var(--line)}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap"><nav>
+    <a class="brand" href="#home">
+      <img src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io logo" />
+      <span><strong>Iconx.io</strong><small>A registered GFT Rewards Agency</small></span>
+    </a>
+    <div class="navlinks" id="navlinks"><a href="#solutions">Solutions</a><a href="#sampling">One4One Sampling</a><a href="#process">How It Works</a><a href="#industries">Industries</a><a href="#contact">Contact</a></div>
+    <a class="button primary nav-cta" href="#contact">Get Started</a><button class="menu" aria-label="Open menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+  </nav></div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Rewards • Sampling • Engagement</div>
+      <h1>Real-Time Rewards.<br>Verified Sampling.<br>Stronger <span class="gradient-text">Growth.</span></h1>
+      <p class="lead">Iconx.io helps brands, retailers, agencies, and partners build measurable customer engagement through real-time rewards and verified One4One product sampling.</p>
+      <div class="actions"><a class="button primary" href="#contact">Partner With Us</a><a class="button secondary" href="#sampling">Explore One4One →</a></div>
+      <div class="trust-row"><span><i class="dot"></i>Real-time reward delivery</span><span><i class="dot"></i>Verified product sampling</span><span><i class="dot"></i>GFT Rewards technology</span></div>
+    </div>
+    <div class="logo-stage"><div class="logo-glow"></div><img class="hero-logo" src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io colorful X logo"><h2>Iconx.io</h2><p>A registered GFT Rewards Agency</p></div>
+  </div>
+</section>
+
+<section id="solutions"><div class="wrap">
+  <div class="section-head"><div class="eyebrow">Platform capabilities</div><h2>Technology that connects every stakeholder</h2><p>Launch targeted experiences that connect brands, retailers, partners, and consumers with measurable outcomes.</p></div>
+  <div class="features glass">
+    <article class="card"><div class="icon">🎁</div><h3>Real-Time Rewards</h3><p>Deliver rewards at checkout or online without requiring a separate consumer app.</p></article>
+    <article class="card"><div class="icon">✓</div><h3>Verified Engagement</h3><p>Track participation through deterministic campaign rules and attributable redemption events.</p></article>
+    <article class="card"><div class="icon">↗</div><h3>Audience Growth</h3><p>Turn a sample or purchase into an ongoing relationship through permissioned follow-up.</p></article>
+    <article class="card"><div class="icon">◎</div><h3>Flexible Settlement</h3><p>Support efficient reward and partner payments through the GFT Rewards ecosystem.</p></article>
+  </div>
+</div></section>
+
+<section id="sampling"><div class="wrap one4one glass">
+  <div class="one-grid">
+    <div class="one-brand"><div class="one-mark">1 4 1</div><div class="one-label">One4One</div><p style="color:#cfc7bc;max-width:420px">Verified sampling. Real people. No wasted product.</p></div>
+    <div class="one-copy"><div class="eyebrow">Iconx.io sampling division</div><h2>Every sample tied to one verified consumer action.</h2><p>One4One is Iconx.io’s cause-driven sampling model. A consumer scans the QR code attached to a sample, completes the required action, and unlocks the product while a participating cause receives the designated contribution.</p>
+      <div class="steps">
+        <div class="step"><b>1</b><div><strong>Scan</strong><br><span>Consumer scans the unique QR code on the sample.</span></div></div>
+        <div class="step"><b>2</b><div><strong>Verify</strong><br><span>The platform confirms the required participation event and prevents duplicate redemption.</span></div></div>
+        <div class="step"><b>3</b><div><strong>Unlock & Give</strong><br><span>The consumer receives the sample and the campaign’s designated charitable contribution is triggered.</span></div></div>
+        <div class="step"><b>4</b><div><strong>Re-engage</strong><br><span>Brands can continue the relationship with approved follow-up offers and loyalty experiences.</span></div></div>
+      </div>
+      <div class="sampling-stats"><div class="stat"><strong>One person</strong><span>Per verified sample redemption</span></div><div class="stat"><strong>Pay on action</strong><span>Campaign cost aligned to verified participation</span></div><div class="stat"><strong>Cause-driven</strong><span>Sampling can support a participating charity</span></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="section-head"><div class="eyebrow">Built for the ecosystem</div><h2>Solutions for every stakeholder</h2></div><div class="stakeholders">
+  <article class="card glass"><div class="icon">▥</div><h3>For Brands</h3><p>Launch rewards and sampling campaigns designed around measurable engagement.</p></article>
+  <article class="card glass"><div class="icon">🛒</div><h3>For Retailers</h3><p>Drive traffic, basket growth, loyalty, and repeat visits with targeted incentives.</p></article>
+  <article class="card glass"><div class="icon">◉</div><h3>For Agencies</h3><p>Build campaigns with flexible rules, reporting, and partner-ready workflows.</p></article>
+  <article class="card glass"><div class="icon">⌘</div><h3>For Partners</h3><p>Connect distribution, technology, media, and payment capabilities into one program.</p></article>
+</div></div></section>
+
+<section id="process"><div class="wrap"><div class="section-head"><div class="eyebrow">How Iconx.io works</div><h2>From concept to measurable action</h2></div><div class="process">
+  <article class="process-card glass"><div class="num">1</div><h3>Connect</h3><p>Define the participating brand, retailer, audience, product, and partners.</p></article>
+  <article class="process-card glass"><div class="num">2</div><h3>Design</h3><p>Create campaign rules, eligible actions, reward logic, and sampling controls.</p></article>
+  <article class="process-card glass"><div class="num">3</div><h3>Activate</h3><p>Launch through retail, campus, event, digital, or partner channels.</p></article>
+  <article class="process-card glass"><div class="num">4</div><h3>Measure</h3><p>Track participation, redemption, follow-up engagement, and partner outcomes.</p></article>
+</div></div></section>
+
+<section id="industries"><div class="wrap"><div class="section-head"><div class="eyebrow">Flexible applications</div><h2>Rewards and sampling across industries</h2></div><div class="industries industry-grid">
+  <article class="card glass"><div class="icon">🛍</div><h3>Retail & Grocery</h3><p>Checkout rewards, targeted offers, and verified in-store experiences.</p></article>
+  <article class="card glass"><div class="icon">◇</div><h3>Consumer Products</h3><p>Sampling, trial, conversion, retention, and brand advocacy.</p></article>
+  <article class="card glass"><div class="icon">🎓</div><h3>College & Campus</h3><p>Reach student audiences through controlled, measurable activations.</p></article>
+  <article class="card glass"><div class="icon">✈</div><h3>Travel & Hospitality</h3><p>Guest incentives, destination rewards, and partner-funded experiences.</p></article>
+  <article class="card glass"><div class="icon">♡</div><h3>Health & Wellness</h3><p>Support approved behaviors with relevant education and incentives.</p></article>
+  <article class="card glass"><div class="icon">▶</div><h3>Media & Entertainment</h3><p>Connect purchases and participation to content and digital rewards.</p></article>
+</div></div></section>
+
+<section id="contact"><div class="wrap"><div class="cta glass"><div><div class="eyebrow">Start a campaign</div><h2>Turn attention into verified action.</h2><p>Build a real-time rewards or One4One sampling program with Iconx.io.</p></div><div class="actions" style="margin:0"><a class="button primary" href="mailto:contact@iconx.io">Contact Iconx.io</a><a class="button secondary" href="tel:+13109060164">+1 310 906 0164</a></div></div></div></section>
+</main>
+
+<footer><div class="wrap"><div class="footer-grid">
+  <div><a class="brand" href="#home"><img src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io"><span><strong>Iconx.io</strong><small>A registered GFT Rewards Agency</small></span></a><p>Real-time rewards and verified product sampling for brands, retailers, agencies, and partners.</p></div>
+  <div><h4>Solutions</h4><a href="#solutions">Rewards</a><a href="#sampling">One4One Sampling</a><a href="#process">How It Works</a></div>
+  <div><h4>Company</h4><a href="https://www.iconx.io/" target="_blank" rel="noopener">Current Website</a><a href="https://gftrewards.com" target="_blank" rel="noopener">GFT Rewards</a><a href="mailto:contact@iconx.io">Contact</a></div>
+  <div><h4>Get in touch</h4><a href="mailto:contact@iconx.io">contact@iconx.io</a><a href="tel:+13109060164">+1 310 906 0164</a><span>1718 E. Speedway Blvd. #111<br>Tucson, AZ 85719</span></div>
+</div><div class="legal"><span>© <span id="year"></span> Iconx.io. All rights reserved.</span><span>One4One is presented as an Iconx.io sampling program.</span></div></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));</script>
+</body></html>
