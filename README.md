@@ -1,13 +1,16 @@
-# Iconx.io Static Website
+# Iconx.io Vercel Contact Capture
 
-## Publish with GitHub Pages
-1. Create a new GitHub repository.
-2. Upload `index.html` to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select the `main` branch and `/ (root)`, then click **Save**.
+## Files
+- `index.html` — updated website with ChatGPT-style prompt capture
+- `api/contact.js` — Vercel serverless email handler
+- `vercel.json` — Vercel function configuration
 
-## Customize
-- Edit wording directly in `index.html`.
-- Replace the remote logo URLs with local image files if desired.
-- Update email, phone, address, legal links, and campaign claims before launch.
+## Required Vercel environment variables
+In Vercel, open **Project → Settings → Environment Variables** and add:
+
+- `RESEND_API_KEY` — your Resend API key
+- `CONTACT_FROM_EMAIL` — for example: `Iconx.io Website <website@iconx.io>`
+
+The sending address/domain must be verified in Resend.
+
+After adding the variables, redeploy the project.
