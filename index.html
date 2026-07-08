@@ -44,12 +44,25 @@
     .one-mark{font-family:Georgia,serif;font-style:italic;font-size:clamp(5rem,12vw,9rem);line-height:.8;color:#f5eadc;letter-spacing:-.08em}.one-label{font-size:1.45rem;letter-spacing:.18em;text-transform:uppercase;margin-top:24px;color:#f5eadc}
     .one-copy{padding:50px;position:relative}.one-copy h2{font-size:clamp(2.1rem,4vw,3.8rem);line-height:1.04;margin:10px 0 20px}.one-copy p{color:var(--muted)}
     .steps{display:grid;gap:12px;margin-top:26px}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(8,15,29,.58)}.step b{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--cyan))}
+
+    .endcap{margin:0 0 34px;padding:30px;border:1px solid rgba(76,197,255,.34);border-radius:18px;background:
+      linear-gradient(135deg,rgba(13,49,86,.72),rgba(47,20,79,.66));box-shadow:0 22px 55px rgba(0,0,0,.28);position:relative;overflow:hidden}
+    .endcap:after{content:"";position:absolute;right:-70px;top:-90px;width:250px;height:250px;border-radius:50%;background:rgba(236,57,188,.18);filter:blur(46px)}
+    .endcap>*{position:relative;z-index:1}.endcap h2{font-size:clamp(2rem,3.7vw,3.35rem);line-height:1.04;margin:9px 0 16px}
+    .endcap-intro{font-size:1.02rem;color:#dce5f5!important;max-width:780px}
+    .endcap-highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
+    .endcap-item{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(5,11,24,.46)}
+    .endcap-item strong{display:block;margin-bottom:4px;color:#fff}.endcap-item span{display:block;color:var(--muted);font-size:.88rem}
+    .built-for{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+    .built-for h3{margin:0 0 14px;font-size:1.02rem;color:#fff}.built-for ul{margin:0;padding-left:19px;display:grid;gap:9px;color:#dce5f5}
+    .built-for li::marker{color:var(--cyan)}
+
     .sampling-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.stat{padding:18px;border-top:1px solid rgba(87,192,255,.55)}.stat strong{display:block;font-size:1.45rem;color:#fff}.stat span{font-size:.82rem;color:var(--muted)}
     .stakeholders,.industries{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.industry-grid{grid-template-columns:repeat(3,1fr)}
     .process{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.process-card{padding:28px;text-align:center;position:relative}.process-card .num{margin:0 auto 18px;width:48px;height:48px;border:1px solid var(--pink);border-radius:50%;display:grid;place-items:center;color:#8de5ff;font-size:1.2rem;font-weight:800}.process-card p{color:var(--muted);font-size:.9rem}
     .cta{padding:44px;display:flex;justify-content:space-between;gap:30px;align-items:center;background:linear-gradient(105deg,rgba(0,103,255,.35),rgba(130,30,255,.42),rgba(238,36,179,.34));position:relative;overflow:hidden}.cta h2{font-size:2rem;margin:0 0 7px}.cta p{margin:0;color:#dce4f5}
     footer{border-top:1px solid var(--line);padding:50px 0 28px;color:#9eabc3}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:38px}.footer-grid h4{color:#fff;margin-top:0}.footer-grid a{display:block;margin:8px 0;font-size:.9rem}.legal{border-top:1px solid var(--line);margin-top:35px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:.8rem}
-    @media(max-width:900px){.navlinks,.nav-cta{display:none}.menu{display:block}.hero-grid,.one-grid{grid-template-columns:1fr}.logo-stage{order:-1}.hero-logo{max-width:300px}.features,.stakeholders,.process{grid-template-columns:repeat(2,1fr)}.industry-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.one-brand{min-height:300px}.one-copy{padding:35px}.sampling-stats{grid-template-columns:1fr}.cta{align-items:flex-start;flex-direction:column}}
+    @media(max-width:900px){.endcap-highlights{grid-template-columns:1fr}.navlinks,.nav-cta{display:none}.menu{display:block}.hero-grid,.one-grid{grid-template-columns:1fr}.logo-stage{order:-1}.hero-logo{max-width:300px}.features,.stakeholders,.process{grid-template-columns:repeat(2,1fr)}.industry-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.one-brand{min-height:300px}.one-copy{padding:35px}.sampling-stats{grid-template-columns:1fr}.cta{align-items:flex-start;flex-direction:column}}
     @media(max-width:590px){nav{height:68px}.brand small{font-size:.66rem}.hero{padding-top:45px}.features,.stakeholders,.process,.industry-grid{grid-template-columns:1fr}.card{min-height:auto}.one-brand{padding:32px}.one-copy{padding:28px 22px}.cta{padding:28px}.footer-grid{grid-template-columns:1fr}.legal{flex-direction:column}.navlinks.open{display:flex;position:absolute;left:0;right:0;top:68px;flex-direction:column;padding:22px;background:#070d1a;border-bottom:1px solid var(--line)}}
   </style>
 </head>
@@ -92,7 +105,32 @@
 <section id="sampling"><div class="wrap one4one glass">
   <div class="one-grid">
     <div class="one-brand"><div class="one-mark">1 4 1</div><div class="one-label">One4One</div><p style="color:#cfc7bc;max-width:420px">Verified sampling. Real people. No wasted product.</p></div>
-    <div class="one-copy"><div class="eyebrow">Iconx.io sampling division</div><h2>Every sample tied to one verified consumer action.</h2><p>One4One is Iconx.io’s cause-driven sampling model. A consumer scans the QR code attached to a sample, completes the required action, and unlocks the product while a participating cause receives the designated contribution.</p>
+    <div class="one-copy"><div class="eyebrow">Iconx.io sampling division</div>
+
+      <div class="endcap">
+        <div class="eyebrow">Retail activation</div>
+        <h2>Get an Endcap on Your Next Campaign</h2>
+        <p class="endcap-intro">Emerging brands can access independent grocery stores in the geography they choose, with a dedicated endcap and the in-store support needed to keep the program visible and measurable.</p>
+
+        <div class="endcap-highlights">
+          <div class="endcap-item"><strong>Dedicated Endcap</strong><span>Purpose-built shelf presence for the campaign.</span></div>
+          <div class="endcap-item"><strong>Signage Up. Placement Maintained.</strong><span>Campaign materials stay visible and the display is kept in place.</span></div>
+          <div class="endcap-item"><strong>Store-Associate Support</strong><span>Store associates know the program is running and can help support execution.</span></div>
+          <div class="endcap-item"><strong>Real-Time Sell-Through Data</strong><span>Monitor product movement and campaign performance as it happens.</span></div>
+        </div>
+
+        <div class="built-for">
+          <h3>Built for:</h3>
+          <ul>
+            <li>Traditional brands trying to break the current model and speak directly to the shopper.</li>
+            <li>DTC brands making the move into grocery.</li>
+            <li>Brands with a specific retailer pitch.</li>
+            <li>Brands that have validated a product in DTC but lack chain-velocity data.</li>
+            <li>Brands trying to crack a specific region or pilot for a national rollout.</li>
+          </ul>
+        </div>
+      </div>
+      <h2>Every sample tied to one verified consumer action.</h2><p>One4One is Iconx.io’s cause-driven sampling model. A consumer scans the QR code attached to a sample, completes the required action, and unlocks the product while a participating cause receives the designated contribution.</p>
       <div class="steps">
         <div class="step"><b>1</b><div><strong>Scan</strong><br><span>Consumer scans a unique QR code.</span></div></div>
         <div class="step"><b>2</b><div><strong>Verify</strong><br><span>The platform confirms the required participation event and prevents duplicate redemption.</span></div></div>
