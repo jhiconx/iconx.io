@@ -53,3 +53,27 @@ Each successful inquiry is now:
 3. emailed through Resend.
 
 The form will show an error if the lead cannot be saved.
+
+
+## Private Iconx Lead Intelligence dashboard
+
+New files:
+- `admin.html`
+- `api/admin-leads.js`
+
+Open the dashboard at:
+- `https://YOUR-VERCEL-DOMAIN/admin.html`
+
+Add this Vercel Production environment variable before redeploying:
+- `ADMIN_PASSWORD` — choose a strong private password
+
+The dashboard includes:
+- password-gated access
+- natural-language lead search
+- structured lead filters
+- lead detail drawer
+- status, priority, and notes editing
+- CSV export
+- basic opportunity matching based on stored lead text
+
+The current search is deterministic and keyword/intent-based. It does not call a hosted LLM or Ollama yet.

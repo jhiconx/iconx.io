@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Iconx Lead Intelligence</title>
+  <style>
+    :root{
+      --bg:#07101f;--panel:#0d1729;--panel2:#111f36;--text:#f7f9ff;--muted:#99a8c1;
+      --line:rgba(126,161,222,.18);--cyan:#16c7ff;--violet:#8d55ff;--pink:#ec39bc;
+      --good:#32d583;--warn:#fdb022;--bad:#f97066;--shadow:0 24px 70px rgba(0,0,0,.36);
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+      radial-gradient(circle at 80% 5%,rgba(141,85,255,.16),transparent 24%),
+      radial-gradient(circle at 10% 18%,rgba(22,199,255,.12),transparent 22%),var(--bg);color:var(--text)}
+    button,input,textarea,select{font:inherit}
+    .hidden{display:none!important}
+    .login{min-height:100vh;display:grid;place-items:center;padding:24px}
+    .login-card{width:min(100%,470px);padding:34px;border:1px solid var(--line);border-radius:24px;background:rgba(13,23,41,.92);box-shadow:var(--shadow)}
+    .logo{width:58px;height:58px;border-radius:17px;background:linear-gradient(135deg,var(--pink),var(--cyan));display:grid;place-items:center;font-weight:900;font-size:1.45rem;margin-bottom:22px}
+    h1,h2,h3,p{margin-top:0}.login-card h1{margin-bottom:8px}.muted{color:var(--muted)}
+    .field{width:100%;border:1px solid var(--line);background:#081221;color:white;border-radius:13px;padding:14px 15px;outline:none}
+    .field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(22,199,255,.1)}
+    .primary{border:0;border-radius:13px;padding:13px 18px;font-weight:800;color:white;cursor:pointer;background:linear-gradient(100deg,var(--pink),var(--violet),var(--cyan))}
+    .login-card .primary{width:100%;margin-top:12px}
+    .error{color:#ff9b97;font-size:.9rem;margin-top:12px}
+
+    .app{min-height:100vh;display:grid;grid-template-columns:260px 1fr}
+    aside{position:sticky;top:0;height:100vh;padding:22px 18px;border-right:1px solid var(--line);background:rgba(6,13,25,.88);backdrop-filter:blur(18px)}
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:32px}.brand .logo{width:46px;height:46px;margin:0;border-radius:14px}.brand strong{display:block}.brand small{display:block;color:var(--muted)}
+    .navbtn{display:flex;width:100%;align-items:center;gap:10px;border:0;background:transparent;color:#cbd5e8;padding:12px 13px;border-radius:12px;cursor:pointer;text-align:left;margin:4px 0}
+    .navbtn.active,.navbtn:hover{background:rgba(255,255,255,.06);color:white}
+    .sidebar-bottom{position:absolute;left:18px;right:18px;bottom:20px}
+    main{padding:28px;min-width:0}
+    .topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:24px}
+    .topbar h1{font-size:clamp(1.8rem,3vw,2.65rem);letter-spacing:-.045em;margin-bottom:6px}
+    .top-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .secondary{border:1px solid var(--line);background:rgba(13,23,41,.78);color:white;border-radius:12px;padding:11px 14px;cursor:pointer}
+
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+    .stat{padding:18px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(180deg,rgba(17,31,54,.82),rgba(10,20,36,.88))}
+    .stat span{display:block;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+    .stat strong{display:block;font-size:1.8rem;margin-top:5px}
+
+    .query-panel{padding:18px;border:1px solid var(--line);border-radius:20px;background:rgba(13,23,41,.84);box-shadow:var(--shadow);margin-bottom:20px}
+    .query-row{display:grid;grid-template-columns:1fr auto;gap:10px}
+    .query-input{width:100%;border:0;outline:0;background:#07111f;color:white;border-radius:14px;padding:16px;font-size:1rem;min-height:58px}
+    .suggestions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{border:1px solid var(--line);background:rgba(255,255,255,.035);color:#d7e1f2;border-radius:999px;padding:8px 11px;font-size:.8rem;cursor:pointer}
+    .answer{display:none;margin-top:15px;padding:15px;border-left:3px solid var(--cyan);background:rgba(22,199,255,.06);border-radius:10px;color:#dfeaff}
+    .answer.show{display:block}
+
+    .toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:20px 0 12px;flex-wrap:wrap}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .filters select,.filters input{border:1px solid var(--line);background:#0a1527;color:white;border-radius:10px;padding:9px 11px}
+    .table-wrap{border:1px solid var(--line);border-radius:18px;overflow:auto;background:rgba(10,19,34,.84)}
+    table{width:100%;border-collapse:collapse;min-width:1050px}
+    th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);font-size:.87rem;vertical-align:top}
+    th{position:sticky;top:0;background:#0e1a2d;color:#aab7ca;font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;z-index:1}
+    tbody tr{cursor:pointer}tbody tr:hover{background:rgba(255,255,255,.035)}
+    .pill{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:.72rem;font-weight:700;background:rgba(141,85,255,.14);color:#cbb8ff}
+    .pill.new{background:rgba(22,199,255,.12);color:#86e2ff}.pill.qualified{background:rgba(50,213,131,.12);color:#7de9ae}.pill.contacted{background:rgba(253,176,34,.12);color:#ffd37b}
+    .empty{padding:45px;text-align:center;color:var(--muted)}
+    .pagination{display:flex;justify-content:flex-end;gap:8px;align-items:center;margin-top:12px;color:var(--muted);font-size:.85rem}
+
+    .drawer{position:fixed;inset:0;z-index:60;display:none;background:rgba(0,0,0,.5)}
+    .drawer.open{display:block}.drawer-panel{position:absolute;right:0;top:0;bottom:0;width:min(100%,600px);overflow:auto;background:#0a1425;border-left:1px solid var(--line);padding:24px}
+    .drawer-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+    .close{border:0;background:rgba(255,255,255,.07);color:white;width:38px;height:38px;border-radius:10px;cursor:pointer}
+    .detail-grid{display:grid;grid-template-columns:150px 1fr;gap:10px 14px;margin:22px 0}.detail-grid b{color:#92a2bb;font-size:.82rem}.detail-grid span{white-space:pre-wrap}
+    .drawer textarea{width:100%;min-height:130px;border:1px solid var(--line);border-radius:13px;background:#07111f;color:white;padding:13px}
+    .drawer-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}.drawer select{width:100%;border:1px solid var(--line);background:#07111f;color:white;border-radius:11px;padding:11px}
+
+    @media(max-width:1000px){.app{grid-template-columns:1fr}aside{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;overflow:auto}.brand{margin:0 14px 0 0}.sidebar-bottom{position:static;margin-left:auto}.navbtn{width:auto;white-space:nowrap}.stats{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){main{padding:18px}.stats{grid-template-columns:1fr 1fr}.query-row{grid-template-columns:1fr}.topbar{flex-direction:column}.drawer-panel{width:100%}.detail-grid{grid-template-columns:1fr}.drawer-controls{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <section class="login" id="loginView">
+    <div class="login-card">
+      <div class="logo">X</div>
+      <h1>Iconx Lead Intelligence</h1>
+      <p class="muted">Private access to prospect search, matching, notes, and follow-up status.</p>
+      <input class="field" id="passwordInput" type="password" placeholder="Admin password" autocomplete="current-password" />
+      <button class="primary" id="loginButton">Open dashboard</button>
+      <div class="error" id="loginError"></div>
+    </div>
+  </section>
+
+  <div class="app hidden" id="appView">
+    <aside>
+      <div class="brand"><div class="logo">X</div><div><strong>Iconx.io</strong><small>Lead Intelligence</small></div></div>
+      <button class="navbtn active">⌕ Search leads</button>
+      <button class="navbtn" id="showAllButton">▦ All leads</button>
+      <button class="navbtn" id="newLeadsButton">● New leads</button>
+      <div class="sidebar-bottom"><button class="navbtn" id="logoutButton">↪ Sign out</button></div>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <div><h1>Lead Intelligence</h1><p class="muted">Search and organize Iconx opportunities in plain English.</p></div>
+        <div class="top-actions">
+          <button class="secondary" id="refreshButton">Refresh</button>
+          <button class="primary" id="exportButton">Export CSV</button>
+        </div>
+      </div>
+
+      <section class="stats">
+        <div class="stat"><span>Total leads</span><strong id="totalStat">0</strong></div>
+        <div class="stat"><span>New</span><strong id="newStat">0</strong></div>
+        <div class="stat"><span>Sampling + Endcaps</span><strong id="bothStat">0</strong></div>
+        <div class="stat"><span>High priority</span><strong id="priorityStat">0</strong></div>
+      </section>
+
+      <section class="query-panel">
+        <div class="query-row">
+          <input class="query-input" id="queryInput" placeholder="Ask: Show beverage brands interested in California endcaps" />
+          <button class="primary" id="queryButton">Search</button>
+        </div>
+        <div class="suggestions">
+          <button class="chip">Show all sampling leads</button>
+          <button class="chip">Find California endcap prospects</button>
+          <button class="chip">Show new leads</button>
+          <button class="chip">Which leads want both sampling and endcaps?</button>
+          <button class="chip">Find beverage brands</button>
+        </div>
+        <div class="answer" id="answerBox"></div>
+      </section>
+
+      <div class="toolbar">
+        <div><strong id="resultTitle">All leads</strong> <span class="muted" id="resultCount"></span></div>
+        <div class="filters">
+          <input id="quickFilter" placeholder="Filter visible results" />
+          <select id="statusFilter">
+            <option value="">All statuses</option>
+            <option value="new">New</option>
+            <option value="contacted">Contacted</option>
+            <option value="qualified">Qualified</option>
+            <option value="closed">Closed</option>
+          </select>
+          <select id="priorityFilter">
+            <option value="">All priorities</option>
+            <option value="unreviewed">Unreviewed</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Lead</th><th>Company</th><th>Interest</th><th>Geography</th><th>Status</th><th>Priority</th><th>Received</th></tr></thead>
+          <tbody id="leadRows"></tbody>
+        </table>
+        <div class="empty hidden" id="emptyState">No matching leads.</div>
+      </div>
+      <div class="pagination">
+        <button class="secondary" id="prevPage">Previous</button>
+        <span id="pageText">Page 1</span>
+        <button class="secondary" id="nextPage">Next</button>
+      </div>
+    </main>
+  </div>
+
+  <div class="drawer" id="drawer">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div><h2 id="detailName">Lead</h2><p class="muted" id="detailCompany"></p></div>
+        <button class="close" id="closeDrawer">×</button>
+      </div>
+      <div class="detail-grid" id="detailGrid"></div>
+      <div class="drawer-controls">
+        <label>Status<select id="detailStatus"><option>new</option><option>contacted</option><option>qualified</option><option>closed</option></select></label>
+        <label>Priority<select id="detailPriority"><option>unreviewed</option><option>high</option><option>medium</option><option>low</option></select></label>
+      </div>
+      <label>Notes<textarea id="detailNotes" placeholder="Add follow-up notes, context, or next steps"></textarea></label>
+      <button class="primary" id="saveLeadButton" style="margin-top:14px">Save changes</button>
+      <div class="error" id="drawerError"></div>
+    </div>
+  </div>
+
+<script>
+const state = {
+  adminKey: sessionStorage.getItem("iconx_admin_key") || "",
+  allLeads: [],
+  visibleLeads: [],
+  page: 1,
+  pageSize: 20,
+  selectedLead: null
+};
+
+const $ = id => document.getElementById(id);
+
+async function apiRequest(options = {}) {
+  const response = await fetch("/api/admin-leads", {
+    method: options.method || "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Admin-Key": state.adminKey
+    },
+    body: options.body ? JSON.stringify(options.body) : undefined
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || "Request failed.");
+  return data;
+}
+
+async function login() {
+  state.adminKey = $("passwordInput").value.trim();
+  $("loginError").textContent = "";
+  try {
+    const data = await apiRequest();
+    sessionStorage.setItem("iconx_admin_key", state.adminKey);
+    $("loginView").classList.add("hidden");
+    $("appView").classList.remove("hidden");
+    state.allLeads = data.leads || [];
+    state.visibleLeads = [...state.allLeads];
+    render();
+  } catch (error) {
+    $("loginError").textContent = "Password not accepted.";
+  }
+}
+
+async function loadAll() {
+  const data = await apiRequest();
+  state.allLeads = data.leads || [];
+  state.visibleLeads = [...state.allLeads];
+  state.page = 1;
+  $("answerBox").classList.remove("show");
+  $("resultTitle").textContent = "All leads";
+  render();
+}
+
+async function runQuery(query) {
+  query = String(query || "").trim();
+  if (!query) return loadAll();
+  $("queryButton").disabled = true;
+  $("queryButton").textContent = "Searching…";
+  try {
+    const data = await apiRequest({method:"POST", body:{action:"search", query}});
+    state.visibleLeads = data.leads || [];
+    state.page = 1;
+    $("answerBox").textContent = data.answer || "";
+    $("answerBox").classList.add("show");
+    $("resultTitle").textContent = `Results for “${query}”`;
+    render();
+  } catch (error) {
+    $("answerBox").textContent = error.message;
+    $("answerBox").classList.add("show");
+  } finally {
+    $("queryButton").disabled = false;
+    $("queryButton").textContent = "Search";
+  }
+}
+
+function filteredLeads() {
+  const quick = $("quickFilter").value.toLowerCase().trim();
+  const status = $("statusFilter").value;
+  const priority = $("priorityFilter").value;
+  return state.visibleLeads.filter(lead => {
+    const text = Object.values(lead).filter(v => typeof v === "string").join(" ").toLowerCase();
+    return (!quick || text.includes(quick)) &&
+           (!status || lead.lead_status === status) &&
+           (!priority || lead.priority === priority);
+  });
+}
+
+function renderStats() {
+  $("totalStat").textContent = state.allLeads.length;
+  $("newStat").textContent = state.allLeads.filter(l => l.lead_status === "new").length;
+  $("bothStat").textContent = state.allLeads.filter(l => String(l.interest || "").toLowerCase().includes("sampling and endcaps")).length;
+  $("priorityStat").textContent = state.allLeads.filter(l => l.priority === "high").length;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+}
+
+function formatDate(value) {
+  if (!value) return "—";
+  return new Intl.DateTimeFormat(undefined,{dateStyle:"medium",timeStyle:"short"}).format(new Date(value));
+}
+
+function render() {
+  renderStats();
+  const leads = filteredLeads();
+  const totalPages = Math.max(1, Math.ceil(leads.length / state.pageSize));
+  if (state.page > totalPages) state.page = totalPages;
+  const start = (state.page - 1) * state.pageSize;
+  const pageLeads = leads.slice(start, start + state.pageSize);
+
+  $("resultCount").textContent = `${leads.length} result${leads.length === 1 ? "" : "s"}`;
+  $("pageText").textContent = `Page ${state.page} of ${totalPages}`;
+  $("prevPage").disabled = state.page <= 1;
+  $("nextPage").disabled = state.page >= totalPages;
+  $("emptyState").classList.toggle("hidden", pageLeads.length > 0);
+
+  $("leadRows").innerHTML = pageLeads.map(lead => `
+    <tr data-id="${escapeHtml(lead.id)}">
+      <td><strong>${escapeHtml(lead.full_name || "Unnamed lead")}</strong><br><span class="muted">${escapeHtml(lead.email || "")}</span></td>
+      <td>${escapeHtml(lead.company || "—")}</td>
+      <td><span class="pill">${escapeHtml(lead.interest || "Not specified")}</span></td>
+      <td>${escapeHtml(lead.geography || "—")}</td>
+      <td><span class="pill ${escapeHtml(lead.lead_status || "")}">${escapeHtml(lead.lead_status || "new")}</span></td>
+      <td>${escapeHtml(lead.priority || "unreviewed")}</td>
+      <td>${escapeHtml(formatDate(lead.created_at))}</td>
+    </tr>`).join("");
+
+  document.querySelectorAll("#leadRows tr").forEach(row => {
+    row.addEventListener("click", () => openLead(row.dataset.id));
+  });
+}
+
+function openLead(id) {
+  const lead = state.allLeads.find(item => item.id === id) || state.visibleLeads.find(item => item.id === id);
+  if (!lead) return;
+  state.selectedLead = lead;
+  $("detailName").textContent = lead.full_name || "Unnamed lead";
+  $("detailCompany").textContent = lead.company || lead.email || "";
+  $("detailStatus").value = lead.lead_status || "new";
+  $("detailPriority").value = lead.priority || "unreviewed";
+  $("detailNotes").value = lead.notes || "";
+  const rows = [
+    ["Email", lead.email],["LinkedIn", lead.linkedin_url],["Interest", lead.interest],
+    ["Geography", lead.geography],["Retailer / channel", lead.retailer_or_channel],
+    ["Product category", lead.product_category],["Business stage", lead.business_stage],
+    ["Campaign timing", lead.campaign_timing],["Budget / scale", lead.budget_or_scale],
+    ["Heard about us", lead.heard_about_us],["Received", formatDate(lead.created_at)],
+    ["Summary", lead.ai_summary],["Original prompt", lead.original_prompt]
+  ];
+  $("detailGrid").innerHTML = rows.filter(r => r[1]).map(([key,value]) =>
+    `<b>${escapeHtml(key)}</b><span>${escapeHtml(value)}</span>`).join("");
+  $("drawerError").textContent = "";
+  $("drawer").classList.add("open");
+}
+
+async function saveLead() {
+  if (!state.selectedLead) return;
+  $("saveLeadButton").disabled = true;
+  $("saveLeadButton").textContent = "Saving…";
+  $("drawerError").textContent = "";
+  try {
+    const data = await apiRequest({
+      method:"POST",
+      body:{
+        action:"update",
+        id:state.selectedLead.id,
+        lead_status:$("detailStatus").value,
+        priority:$("detailPriority").value,
+        notes:$("detailNotes").value
+      }
+    });
+    const updated = data.lead;
+    state.allLeads = state.allLeads.map(l => l.id === updated.id ? updated : l);
+    state.visibleLeads = state.visibleLeads.map(l => l.id === updated.id ? updated : l);
+    state.selectedLead = updated;
+    render();
+    $("saveLeadButton").textContent = "Saved";
+    setTimeout(() => $("saveLeadButton").textContent = "Save changes", 1200);
+  } catch (error) {
+    $("drawerError").textContent = error.message;
+    $("saveLeadButton").textContent = "Save changes";
+  } finally {
+    $("saveLeadButton").disabled = false;
+  }
+}
+
+function exportCsv() {
+  const leads = filteredLeads();
+  const columns = ["created_at","full_name","email","company","linkedin_url","interest","geography","retailer_or_channel","product_category","business_stage","heard_about_us","lead_status","priority","notes","original_prompt"];
+  const quote = value => `"${String(value ?? "").replace(/"/g,'""')}"`;
+  const csv = [columns.join(","), ...leads.map(l => columns.map(c => quote(l[c])).join(","))].join("\n");
+  const blob = new Blob([csv], {type:"text/csv"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `iconx-leads-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+$("loginButton").addEventListener("click", login);
+$("passwordInput").addEventListener("keydown", e => { if (e.key === "Enter") login(); });
+$("queryButton").addEventListener("click", () => runQuery($("queryInput").value));
+$("queryInput").addEventListener("keydown", e => { if (e.key === "Enter") runQuery(e.target.value); });
+document.querySelectorAll(".chip").forEach(chip => chip.addEventListener("click", () => {
+  $("queryInput").value = chip.textContent;
+  runQuery(chip.textContent);
+}));
+$("refreshButton").addEventListener("click", loadAll);
+$("showAllButton").addEventListener("click", loadAll);
+$("newLeadsButton").addEventListener("click", () => { $("queryInput").value = "Show new leads"; runQuery("Show new leads"); });
+$("quickFilter").addEventListener("input", () => { state.page = 1; render(); });
+$("statusFilter").addEventListener("change", () => { state.page = 1; render(); });
+$("priorityFilter").addEventListener("change", () => { state.page = 1; render(); });
+$("prevPage").addEventListener("click", () => { state.page--; render(); });
+$("nextPage").addEventListener("click", () => { state.page++; render(); });
+$("closeDrawer").addEventListener("click", () => $("drawer").classList.remove("open"));
+$("drawer").addEventListener("click", e => { if (e.target.id === "drawer") $("drawer").classList.remove("open"); });
+$("saveLeadButton").addEventListener("click", saveLead);
+$("exportButton").addEventListener("click", exportCsv);
+$("logoutButton").addEventListener("click", () => {
+  sessionStorage.removeItem("iconx_admin_key");
+  location.reload();
+});
+
+if (state.adminKey) {
+  apiRequest().then(data => {
+    $("loginView").classList.add("hidden");
+    $("appView").classList.remove("hidden");
+    state.allLeads = data.leads || [];
+    state.visibleLeads = [...state.allLeads];
+    render();
+  }).catch(() => sessionStorage.removeItem("iconx_admin_key"));
+}
+</script>
+</body>
+</html>
