@@ -38,3 +38,18 @@ The sender domain/address must be verified in Resend.
 
 - restored High Noon campaign poster and reward unlock image
 - removed Big K couple image
+
+
+## Supabase lead storage
+
+Add these Production environment variables in Vercel:
+
+- `SUPABASE_URL`
+- `SUPABASE_SECRET_KEY`
+
+Each successful inquiry is now:
+1. parsed into structured lead fields,
+2. inserted into `public.iconx_leads`,
+3. emailed through Resend.
+
+The form will show an error if the lead cannot be saved.

@@ -605,6 +605,26 @@ function extractHeardAbout(text) {
   }
   return 'Not provided';
 }
+function extractGeography(text) {
+  const match = text.match(/(?:geography|market|region|target|in)\s*(?:is|:)?\s*((?:southern|northern|central)?\s*(?:california|arizona|florida|texas|new york|chicago|los angeles|san diego|phoenix|tucson|miami|national|nationwide)[^.\n]*)/i);
+  return match ? match[1].trim() : null;
+}
+function extractRetailerOrChannel(text) {
+  const match = text.match(/(?:retailer|channel|stores?|grocery|campus|event)\s*(?:is|:|at|through)?\s*([^.\n]+)/i);
+  return match ? match[1].trim() : null;
+}
+function extractProductCategory(text) {
+  const categories = ["beverage","hydration","snack","food","beauty","wellness","alcohol","cpg","consumer product","supplement"];
+  const lower = text.toLowerCase();
+  return categories.find(category => lower.includes(category)) || null;
+}
+function extractBusinessStage(text) {
+  const lower = text.toLowerCase();
+  if (lower.includes("dtc") || lower.includes("direct-to-consumer")) return "DTC";
+  if (lower.includes("startup") || lower.includes("emerging brand")) return "Emerging brand";
+  if (lower.includes("established") || lower.includes("traditional brand")) return "Established brand";
+  return null;
+}
 function buildSummary(data) {
   const text = data.inquiry.trim();
   return {
@@ -614,6 +634,12 @@ function buildSummary(data) {
     heardAbout: extractHeardAbout(text),
     interest: inferInterest(text),
     linkedin: extractLinkedIn(text),
+    geography: extractGeography(text),
+    retailerOrChannel: extractRetailerOrChannel(text),
+    productCategory: extractProductCategory(text),
+    businessStage: extractBusinessStage(text),
+    campaignTiming: null,
+    budgetOrScale: null,
     inquiry: text
   };
 }
@@ -627,6 +653,10 @@ function renderSummary(summary) {
       <b>How they heard about us</b><span>${escapeHtml(summary.heardAbout)}</span>
       <b>Interest</b><span>${escapeHtml(summary.interest)}</span>
       <b>LinkedIn</b><span>${escapeHtml(summary.linkedin)}</span>
+      ${summary.geography ? `<b>Geography</b><span>${escapeHtml(summary.geography)}</span>` : ''}
+      ${summary.retailerOrChannel ? `<b>Retailer or channel</b><span>${escapeHtml(summary.retailerOrChannel)}</span>` : ''}
+      ${summary.productCategory ? `<b>Product category</b><span>${escapeHtml(summary.productCategory)}</span>` : ''}
+      ${summary.businessStage ? `<b>Business stage</b><span>${escapeHtml(summary.businessStage)}</span>` : ''}
       <b>What they want to do</b><span>${escapeHtml(summary.inquiry)}</span>
     </div>`;
   summaryPreview.classList.add('show');
