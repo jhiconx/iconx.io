@@ -2,6 +2,9 @@
   "functions": {
     "api/contact.js": {
       "maxDuration": 10
+    },
+    "api/admin-leads.js": {
+      "maxDuration": 10
     }
   }
 }

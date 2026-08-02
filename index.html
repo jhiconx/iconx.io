@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Iconx.io — a registered GFT Rewards Agency delivering retail activation, real-time rewards and verified One4One product sampling." />
+  <meta name="description" content="Iconx.io — a registered GFT Rewards Agency delivering retail activation, real-time rewards, CHI-powered Gen Z loyalty and verified One4One product sampling." />
   <title>Iconx.io | Retail Activation, Rewards & Sampling</title>
   <style>
     :root{
@@ -116,6 +116,23 @@
     
     
 
+    .genz-shell{padding:38px;position:relative;overflow:hidden}
+    .genz-shell:before{content:"";position:absolute;right:-120px;top:-130px;width:380px;height:380px;border-radius:50%;background:rgba(116,255,0,.16);filter:blur(64px)}
+    .genz-shell:after{content:"";position:absolute;left:-120px;bottom:-140px;width:360px;height:360px;border-radius:50%;background:rgba(236,57,188,.14);filter:blur(64px)}
+    .genz-shell > *{position:relative;z-index:1}
+    .genz-grid{display:grid;grid-template-columns:.96fr 1.04fr;gap:34px;align-items:center}
+    .chili-stage{min-height:430px;display:grid;place-items:center;text-align:center;border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at 50% 28%,rgba(116,255,0,.18),transparent 24%),linear-gradient(180deg,rgba(6,14,28,.88),rgba(5,9,21,.92));overflow:hidden}
+    .chili-glow{position:absolute;width:270px;height:270px;border-radius:50%;background:linear-gradient(135deg,rgba(116,255,0,.48),rgba(16,200,255,.32),rgba(236,57,188,.26));filter:blur(54px);opacity:.72}
+    .chili-logo{position:relative;width:min(72%,290px);height:auto;object-fit:contain;filter:drop-shadow(0 24px 44px rgba(0,0,0,.42))}
+    .chili-fallback{position:relative;width:min(72%,270px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#74ff00,#ff3b30 44%,#10c8ff);font-weight:1000;font-size:4.4rem;color:white;box-shadow:0 24px 70px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.24)}
+    .chili-caption{position:relative;margin-top:18px;color:#e9f7ff;font-weight:900;letter-spacing:.02em}
+    .genz-copy h2{font-size:clamp(2.25rem,4.8vw,4rem);line-height:1.02;letter-spacing:-.05em;margin:10px 0 18px}
+    .genz-copy p{color:var(--muted);font-size:1.02rem}
+    .genz-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+    .genz-card{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(5,11,24,.56)}
+    .genz-card strong{display:block;margin-bottom:6px;color:#fff}
+    .genz-card span{display:block;color:var(--muted);font-size:.9rem}
+    .genz-note{font-size:.82rem;color:#9eabc3;margin-top:14px}
     .stakeholders,.industries{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .industry-grid{grid-template-columns:repeat(3,1fr)}
     .process{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -160,9 +177,9 @@
 
     @media(max-width:980px){
       .navlinks,.nav-cta{display:none}.menu{display:block}
-      .hero-grid,.activation-grid,.sampling-top,.gallery-grid{grid-template-columns:1fr}
+      .hero-grid,.activation-grid,.sampling-top,.gallery-grid,.genz-grid{grid-template-columns:1fr}
       .features,.stakeholders,.process,
-      .industry-grid,.highlight-grid,.campaign-strip{grid-template-columns:repeat(2,1fr)}
+      .industry-grid,.highlight-grid,.campaign-strip,.genz-cards{grid-template-columns:repeat(2,1fr)}
       .footer-grid{grid-template-columns:1fr 1fr}
       .cta{align-items:flex-start;flex-direction:column}
     }
@@ -171,7 +188,7 @@
       .navlinks.open{display:flex;position:absolute;left:0;right:0;top:68px;flex-direction:column;padding:22px;background:#070d1a;border-bottom:1px solid var(--line)}
       .brand small{font-size:.66rem}
       .hero{padding-top:45px}
-      .features,.stakeholders,.process,.industry-grid,.highlight-grid,.campaign-strip,.steps-grid,.gallery-grid{grid-template-columns:1fr}
+      .features,.stakeholders,.process,.industry-grid,.highlight-grid,.campaign-strip,.steps-grid,.gallery-grid,.genz-cards{grid-template-columns:1fr}
       .gallery-main,
       
       .card{min-height:auto}
@@ -197,6 +214,7 @@
     </a>
     <div class="navlinks" id="navlinks">
       <a href="#solutions">Solutions</a>
+      <a href="#gen-z-loyalty">Gen Z Loyalty</a>
       <a href="#retail-activation">Retail Activation</a>
       <a href="#sampling">One4One Sampling</a>
       <a href="#process">How It Works</a>
@@ -245,6 +263,40 @@
         <article class="card"><div class="icon">✓</div><h3>Verified Engagement</h3><p>Track participation through deterministic campaign rules and attributable redemption events.</p></article>
         <article class="card"><div class="icon">↗</div><h3>Audience Growth</h3><p>Turn a sample or purchase into an ongoing relationship through permissioned follow-up.</p></article>
         <article class="card"><div class="icon">◎</div><h3>Flexible Settlement</h3><p>Support efficient reward and partner payments through the GFT Rewards ecosystem.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="gen-z-loyalty">
+    <div class="wrap">
+      <div class="genz-shell glass">
+        <div class="genz-grid">
+          <div class="chili-stage">
+            <div style="position:relative;display:grid;place-items:center;width:100%">
+              <div class="chili-glow"></div>
+              <img class="chili-logo" src="https://chili-coin-live-tracker.vercel.app/assets/chili-mascot.webp" alt="Chili Coin CHI logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+              <div class="chili-fallback" style="display:none">CHI</div>
+              <div class="chili-caption">Chili Coin (CHI)</div>
+            </div>
+          </div>
+          <div class="genz-copy">
+            <div class="eyebrow">Web3 rewards + engagement</div>
+            <h2>Loyalty For <span class="gradient-text">Gen Z Shoppers</span></h2>
+            <p>The Chili Coin (CHI) is a rewards and engagement token designed to connect brands, retailers, shoppers, and creators in one shared ecosystem.</p>
+            <p>Brands and retailers can use CHI to encourage purchases, loyalty, promotions, and customer participation; shoppers can earn and use CHI through eligible activities and rewards programs; and IP owners, celebrities, and influencers can use CHI-powered campaigns to engage their audiences, support branded experiences, and strengthen fan relationships.</p>
+            <p>CHI is a web3 technology.</p>
+            <div class="genz-cards">
+              <div class="genz-card"><strong>Brands + Retailers</strong><span>Encourage purchases, loyalty, promotions, and customer participation.</span></div>
+              <div class="genz-card"><strong>Shoppers</strong><span>Earn and use CHI through eligible activities and rewards programs.</span></div>
+              <div class="genz-card"><strong>Creators + IP Owners</strong><span>Power audience engagement, branded experiences, and fan relationships.</span></div>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="https://chili-coin-live-tracker.vercel.app/#top" target="_blank" rel="noopener">Learn More About CHI</a>
+              <a class="button secondary" href="https://chili-coin-live-tracker.vercel.app/#top" target="_blank" rel="noopener">View Live Tracker →</a>
+            </div>
+            <div class="genz-note">For more information, visit the Chili Coin live tracker.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -443,6 +495,7 @@
       <div>
         <h4>Solutions</h4>
         <a href="#solutions">Rewards</a>
+        <a href="#gen-z-loyalty">Gen Z Loyalty</a>
         <a href="#retail-activation">Retail Activation</a>
         <a href="#sampling">One4One Sampling</a>
       </div>

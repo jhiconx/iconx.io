@@ -5,6 +5,7 @@ Updated static site for Iconx.io with:
 - no phone number on-site
 - separate Retail Activation / Endcap section
 - separate One4One Sampling section
+- CHI-powered Gen Z loyalty section
 - prompt-only contact capture modal
 - Vercel serverless contact handler
 - attached campaign and lifestyle images packaged in `assets/`
@@ -77,3 +78,8 @@ The dashboard includes:
 - basic opportunity matching based on stored lead text
 
 The current search is deterministic and keyword/intent-based. It does not call a hosted LLM or Ollama yet.
+
+
+## Latest update
+
+Added a section after “Technology that connects every stakeholder” called “Loyalty For Gen Z Shoppers,” with Chili Coin (CHI) copy, live tracker links, and Chili logo display.
