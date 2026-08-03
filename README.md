@@ -83,3 +83,12 @@ The current search is deterministic and keyword/intent-based. It does not call a
 ## Latest update
 
 Added a section after “Technology that connects every stakeholder” called “Loyalty For Gen Z Shoppers,” with Chili Coin (CHI) copy, live tracker links, and Chili logo display.
+
+
+## V2 CHI logo update
+
+The Gen Z Loyalty section now uses local CHI assets with the red coin mark displayed above the Chili wordmark.
+
+New files:
+- `assets/chi-red-coin.png`
+- `assets/chi-logo-text.png`
