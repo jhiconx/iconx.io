@@ -611,78 +611,144 @@ if (SpeechRecognition) {
   voiceButton.style.display = 'none';
 }
 
+function cleanField(value) {
+  return String(value || '')
+    .replace(/^[\s:;,.\-–—]+/, '')
+    .replace(/[\s;]+$/g, '')
+    .trim();
+}
+
+function stripKnownPrefixes(value) {
+  return cleanField(value)
+    .replace(/^(?:is|are|:|-)\s*/i, '')
+    .replace(/^(?:yes|no)\s*[,.:;-]?\s*/i, '')
+    .trim();
+}
+
+function getLines(text) {
+  return String(text || '')
+    .split(/[\r\n]+/)
+    .map(line => line.trim())
+    .filter(Boolean);
+}
+
+function extractByPatterns(text, patterns, validator) {
+  const lines = getLines(text);
+  for (const line of lines) {
+    for (const pattern of patterns) {
+      const match = line.match(pattern);
+      if (match && match[1]) {
+        const value = stripKnownPrefixes(match[1]);
+        if (value && (!validator || validator(value, line))) return value;
+      }
+    }
+  }
+  for (const pattern of patterns) {
+    const match = String(text || '').match(pattern);
+    if (match && match[1]) {
+      const value = stripKnownPrefixes(match[1]);
+      if (value && (!validator || validator(value, String(text || '')))) return value;
+    }
+  }
+  return null;
+}
+
 function inferInterest(text) {
-  const lower = text.toLowerCase();
-  const sampling = lower.includes('sampling') || lower.includes('sample');
-  const endcaps = lower.includes('endcap') || lower.includes('end cap');
+  const lower = String(text || '').toLowerCase();
+  const sampling = /\b(sampling|sample|samples|trial|demo|street team)\b/.test(lower);
+  const endcaps = /\b(endcap|end cap|retail activation|in[-\s]?store display|display)\b/.test(lower);
   if (sampling && endcaps) return 'Sampling and endcaps';
   if (sampling) return 'Sampling';
   if (endcaps) return 'Endcaps';
   return 'Not specified';
 }
+
 function extractLinkedIn(text) {
-  const match = text.match(/https?:\/\/(?:www\.)?linkedin\.com\/[^\s,]+/i);
+  const match = String(text || '').match(/https?:\/\/(?:www\.)?linkedin\.com\/[^\s,]+/i);
   return match ? match[0] : 'Not provided';
 }
+
 function extractEmail(text) {
-  const match = text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  const match = String(text || '').match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
   return match ? match[0] : 'Not provided';
 }
+
+function validNameCandidate(value) {
+  const lower = value.toLowerCase();
+  if (/\b(interested|sampling|sample|endcap|email|company|brand|geography|retailer|channel|market|target|linkedin|phone|budget)\b/.test(lower)) return false;
+  if (value.includes('@') || /^https?:\/\//i.test(value)) return false;
+  return value.split(/\s+/).length <= 4;
+}
+
 function extractName(text) {
-  const patterns = [
-    /(?:my name is|name:)\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})/i,
-    /(?:i am|i'm)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})/i
-  ];
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (match) return match[1].trim();
-  }
-  return 'Not provided';
+  const value = extractByPatterns(text, [
+    /^(?:my\s+)?name\s*(?:is)?\s*:?\s*(.+)$/i,
+    /^(?:i\s+am|i'm)\s+(.+)$/i
+  ], validNameCandidate);
+  return value || 'Not provided';
 }
+
 function extractCompany(text) {
-  const patterns = [
-    /(?:my company|my brand|company|brand)\s+(?:is|:)\s*([^\.\n]+)/i,
-    /(?:founder|owner)\s+(?:of|at)\s+([^\.\n]+)/i
-  ];
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (match) return match[1].trim();
-  }
-  return 'Not provided';
+  const value = extractByPatterns(text, [
+    /^(?:my\s+)?(?:company\s+or\s+brand|company\/brand|company|brand)\s*(?:is)?\s*:?\s*(.+)$/i,
+    /^(?:i\s+work\s+(?:at|for)|we\s+are|we're)\s+(.+)$/i,
+    /^(?:founder|owner)\s+(?:of|at)\s+(.+)$/i
+  ], value => !value.includes('@') && !/^https?:\/\//i.test(value));
+  return value || 'Not provided';
 }
+
 function extractHeardAbout(text) {
-  const patterns = [
-    /(?:heard about (?:iconx\.io|you)|found (?:iconx\.io|you))\s*(?:through|from|via|:)?\s*([^\.\n]+)/i,
-    /referred by\s+([^\.\n]+)/i
-  ];
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (match) return match[1].trim();
-  }
-  return 'Not provided';
+  const value = extractByPatterns(text, [
+    /^(?:how\s+(?:they|you)\s+heard\s+about\s+us|heard\s+about\s+us|source)\s*(?:is)?\s*:?\s*(.+)$/i,
+    /(?:heard\s+about\s+(?:iconx\.io|you)|found\s+(?:iconx\.io|you))\s*(?:through|from|via|on|:)?\s*([^\.\n]+)/i,
+    /referred\s+by\s+([^\.\n]+)/i
+  ]);
+  return value || 'Not provided';
 }
+
 function extractGeography(text) {
-  const match = text.match(/(?:geography|market|region|target|in)\s*(?:is|:)?\s*((?:southern|northern|central)?\s*(?:california|arizona|florida|texas|new york|chicago|los angeles|san diego|phoenix|tucson|miami|national|nationwide)[^.\n]*)/i);
-  return match ? match[1].trim() : null;
+  const value = extractByPatterns(text, [
+    /^(?:the\s+)?geography(?:\s+i\s+want\s+to\s+target)?\s*(?:is)?\s*:?\s*(.+)$/i,
+    /^(?:target\s+)?(?:market|region|city|state|geography)\s*(?:is)?\s*:?\s*(.+)$/i,
+    /^(?:we\s+want\s+to\s+target|i\s+want\s+to\s+target|targeting)\s+(.+)$/i
+  ]);
+  if (value) return value;
+  const match = String(text || '').match(/\b(US|USA|United States|California|Arizona|Florida|Texas|New York|Los Angeles|San Diego|Phoenix|Tucson|Miami|National|Nationwide)\b/i);
+  return match ? match[0] : null;
 }
+
 function extractRetailerOrChannel(text) {
-  const match = text.match(/(?:retailer|channel|stores?|grocery|campus|event)\s*(?:is|:|at|through)?\s*([^.\n]+)/i);
-  return match ? match[1].trim() : null;
+  const value = extractByPatterns(text, [
+    /^(?:my\s+)?(?:preferred\s+)?(?:retailer\s+or\s+channel|retailer\/channel)\s*(?:is)?\s*:?\s*(.+)$/i,
+    /^(?:my\s+)?(?:preferred\s+)?(?:retailer|channel|stores?|grocery|campus|event)\s*(?:is|are|at|through)?\s*:?\s*(.+)$/i
+  ]);
+  return value ? value.replace(/^(?:or\s+channel\s*(?:is)?\s*:?\s*)/i, '').trim() : null;
 }
+
 function extractProductCategory(text) {
-  const categories = ["beverage","hydration","snack","food","beauty","wellness","alcohol","cpg","consumer product","supplement"];
-  const lower = text.toLowerCase();
+  const value = extractByPatterns(text, [
+    /^(?:product\s+category|category)\s*(?:is)?\s*:?\s*(.+)$/i
+  ]);
+  if (value) return value;
+  const categories = ['beverage','hydration','snack','food','beauty','wellness','alcohol','cpg','consumer product','supplement'];
+  const lower = String(text || '').toLowerCase();
   return categories.find(category => lower.includes(category)) || null;
 }
+
 function extractBusinessStage(text) {
-  const lower = text.toLowerCase();
-  if (lower.includes("dtc") || lower.includes("direct-to-consumer")) return "DTC";
-  if (lower.includes("startup") || lower.includes("emerging brand")) return "Emerging brand";
-  if (lower.includes("established") || lower.includes("traditional brand")) return "Established brand";
+  const value = extractByPatterns(text, [
+    /^(?:business\s+stage|stage)\s*(?:is)?\s*:?\s*(.+)$/i
+  ]);
+  if (value) return value;
+  const lower = String(text || '').toLowerCase();
+  if (lower.includes('dtc') || lower.includes('direct-to-consumer')) return 'DTC';
+  if (lower.includes('startup') || lower.includes('emerging brand')) return 'Emerging brand';
+  if (lower.includes('established') || lower.includes('traditional brand')) return 'Established brand';
   return null;
 }
+
 function buildSummary(data) {
-  const text = data.inquiry.trim();
+  const text = String(data.inquiry || '').trim();
   return {
     name: extractName(text),
     email: extractEmail(text),
@@ -699,6 +765,7 @@ function buildSummary(data) {
     inquiry: text
   };
 }
+
 function renderSummary(summary) {
   summaryPreview.innerHTML = `
     <h3>Inquiry summary</h3>

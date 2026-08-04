@@ -92,3 +92,20 @@ The Gen Z Loyalty section now uses local CHI assets with the red coin mark displ
 New files:
 - `assets/chi-red-coin.png`
 - `assets/chi-logo-text.png`
+
+## V2 AI/contact form fix
+
+This version fixes the prompt organizer so label-style entries are parsed correctly, for example:
+
+- `My name is: Jonas`
+- `My company or brand is: Agency, Coke`
+- `The geography I want to target is: US`
+- `My preferred retailer or channel is: Indie`
+
+The contact handler now also reparses the inquiry on the server before saving or emailing, so a bad browser-side summary should not corrupt the lead email.
+
+### Important Vercel settings
+
+The form needs `RESEND_API_KEY` and a verified `CONTACT_FROM_EMAIL` to send emails.
+
+Lead storage needs either `SUPABASE_SECRET_KEY` or `SUPABASE_SERVICE_ROLE_KEY`, plus `SUPABASE_URL`. If Supabase is not configured or the `iconx_leads` table rejects the insert, this version will still send the email through Resend and return success with `database_warning` in the API response.
