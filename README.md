@@ -116,8 +116,8 @@ A top-of-page burst banner has been added:
 
 `Email us to test our new Sample Program in Florida.`
 
-The email link opens a mailto addressed to `jhudson@iconx.io` with a Florida Sample Program Test subject.
+The email link opens a mailto addressed to `samples@iconx.io` with a Florida Sample Program Test subject.
 
 ## Florida Sample Program top burst update
 
-The top-page burst now includes the Ideal + Jomara community banner image and a larger email callout linking to `jhudson@iconx.io`.
+The top-page burst now includes the Ideal + Jomara community banner image and a larger email callout linking to `samples@iconx.io`.

@@ -1,4 +1,4 @@
-const RECIPIENT = "jhudson@iconx.io";
+const RECIPIENT = "samples@iconx.io";
 
 function clean(value, max = 5000) {
   return String(value || "").trim().slice(0, max);
