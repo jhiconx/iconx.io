@@ -23,6 +23,11 @@
     .gradient-text{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
     .glass{background:linear-gradient(180deg,rgba(16,27,48,.76),rgba(8,15,29,.88));border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
     header{position:sticky;top:0;z-index:20;background:rgba(5,9,21,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .burst-bar{border-bottom:1px solid rgba(255,255,255,.12);background:linear-gradient(100deg,rgba(236,57,188,.28),rgba(141,85,255,.30),rgba(16,200,255,.26));color:#fff}
+    .burst-inner{min-height:44px;display:flex;align-items:center;justify-content:center;gap:12px;text-align:center;font-weight:800;letter-spacing:-.01em;font-size:.95rem}
+    .burst-inner span{color:#e8f6ff}
+    .burst-inner a{display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:900}
+    .burst-inner a:hover{color:#93e9ff}
     nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
     .brand img{width:48px;height:48px;border-radius:14px;object-fit:cover;box-shadow:0 0 28px rgba(31,154,255,.32)}
@@ -187,7 +192,8 @@
     }
     @media(max-width:640px){
       nav{height:68px}
-      .navlinks.open{display:flex;position:absolute;left:0;right:0;top:68px;flex-direction:column;padding:22px;background:#070d1a;border-bottom:1px solid var(--line)}
+      .burst-inner{min-height:auto;padding:10px 0;flex-direction:column;gap:2px;font-size:.84rem}
+      .navlinks.open{display:flex;position:absolute;left:0;right:0;top:100%;flex-direction:column;padding:22px;background:#070d1a;border-bottom:1px solid var(--line)}
       .brand small{font-size:.66rem}
       .hero{padding-top:45px}
       .features,.stakeholders,.process,.industry-grid,.highlight-grid,.campaign-strip,.steps-grid,.gallery-grid,.genz-cards{grid-template-columns:1fr}
@@ -209,6 +215,12 @@
 </head>
 <body>
 <header>
+  <div class="burst-bar">
+    <div class="wrap burst-inner">
+      <span>Email us to test our new Sample Program in Florida.</span>
+      <a href="mailto:jhudson@iconx.io?subject=Florida%20Sample%20Program%20Test&body=Hi%20Jonas%2C%0A%0AI%20would%20like%20to%20test%20the%20new%20Iconx.io%20Sample%20Program%20in%20Florida.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A">jhudson@iconx.io</a>
+    </div>
+  </div>
   <div class="wrap"><nav>
     <a class="brand" href="#home">
       <img src="https://static.wixstatic.com/media/acbdc3_0605cc00ba7243b480131256feb146c8~mv2.png" alt="Iconx.io logo" />

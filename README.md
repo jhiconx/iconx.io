@@ -109,3 +109,11 @@ The contact handler now also reparses the inquiry on the server before saving or
 The form needs `RESEND_API_KEY` and a verified `CONTACT_FROM_EMAIL` to send emails.
 
 Lead storage needs either `SUPABASE_SECRET_KEY` or `SUPABASE_SERVICE_ROLE_KEY`, plus `SUPABASE_URL`. If Supabase is not configured or the `iconx_leads` table rejects the insert, this version will still send the email through Resend and return success with `database_warning` in the API response.
+
+## Current short-term homepage burst
+
+A top-of-page burst banner has been added:
+
+`Email us to test our new Sample Program in Florida.`
+
+The email link opens a mailto addressed to `jhudson@iconx.io` with a Florida Sample Program Test subject.
