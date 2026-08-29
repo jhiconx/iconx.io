@@ -2,6 +2,8 @@
 
 Updated static site for Iconx.io with:
 
+- Nextdoor Pixel base code added to `index.html` for PAGE_VIEW tracking using data source ID `30385738-a5b3-4a07-8ad5-40ffe59e7d29`.
+
 - no phone number on-site
 - separate Retail Activation / Endcap section
 - separate One4One Sampling section
