@@ -1,1 +1,1 @@
-Chili Coin Live Wallet Tracker — V23 current site with only the brand/grocer ticker added under the Live Wallet Tracker header.
+V23 restored with only the top TXN metric card removed. TXN column in the transaction table remains.

@@ -1,1 +1,1 @@
-Only visual change from current V23: added a looping Brands and Grocers Distributing Chili ticker under the Live Wallet Tracker header. Base logic and TXN logic were not changed.
+Base code and transaction-flow table are unchanged from V23. Only the top dashboard TXN metric card was removed from the page layout.
