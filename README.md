@@ -123,3 +123,14 @@ The email link opens a mailto addressed to `samples@iconx.io` with a Florida Sam
 ## Florida Sample Program top burst update
 
 The top-page burst now includes the Ideal + Jomara community banner image and a larger email callout linking to `samples@iconx.io`.
+
+
+## Rules page update
+
+Added:
+- `/rules/` clean URL via `rules/index.html`
+- Official Offer, Coupon & Rewards Program Rules
+- Effective Date: August 31, 2026
+- Last Updated: August 31, 2026
+- End Date: September 30, 2026
+- Rules link in the site navigation and footer
