@@ -134,3 +134,19 @@ Added:
 - Last Updated: August 31, 2026
 - End Date: September 30, 2026
 - Rules link in the site navigation and footer
+
+## Google tag install
+
+Added the Google tag to public pages immediately after the opening `<head>` tag:
+
+- `index.html`
+- `rules/index.html`
+
+Google tag ID used:
+
+```text
+GT-PHWFW6WP
+```
+
+The private admin dashboard was not tagged.
+
