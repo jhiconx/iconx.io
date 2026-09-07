@@ -2,6 +2,9 @@
 
 Updated static site for Iconx.io with:
 
+- updated Gen Z Loyalty / CHI section copy
+- added `assets/power-of-local-grocery.png` under the Chili logo in the Gen Z Loyalty section
+
 - Nextdoor Pixel base code added to `index.html` for PAGE_VIEW tracking using data source ID `30385738-a5b3-4a07-8ad5-40ffe59e7d29`.
 
 - no phone number on-site
