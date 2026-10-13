@@ -153,3 +153,8 @@ GT-PHWFW6WP
 
 The private admin dashboard was not tagged.
 
+
+
+## Top banner removal update
+
+Removed the temporary Florida Sample Program top-of-page burst banner from the homepage. The rest of the public site, Google tag, Nextdoor pixel, rules page, CHI section, and contact form remain in place.
