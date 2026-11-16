@@ -91,7 +91,7 @@
   </article>
 </div>
 </main>
-<footer><div class="wrap legal"><span>© <span id="year"></span> Iconx.io. All rights reserved.</span><span><a href="/xmas/">H-E-B Gift Card Sweepstakes Rules</a></span></div></footer>
+<footer><div class="wrap legal"><span>© <span id="year"></span> Iconx.io. All rights reserved.</span><span><a href="/xmas">H-E-B Gift Card Sweepstakes Rules</a></span></div></footer>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

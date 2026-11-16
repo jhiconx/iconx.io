@@ -9,14 +9,20 @@
   },
   "redirects": [
     {
-      "source": "/xmas",
-      "destination": "/xmas/index.html",
-      "permanent": false
-    },
-    {
       "source": "/xmas/",
-      "destination": "/xmas/index.html",
+      "destination": "/xmas",
       "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/xmas",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
     }
   ]
 }
