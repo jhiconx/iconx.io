@@ -7,14 +7,16 @@
       "maxDuration": 10
     }
   },
-  "rewrites": [
+  "redirects": [
     {
       "source": "/xmas",
-      "destination": "/xmas/index.html"
+      "destination": "/xmas/index.html",
+      "permanent": false
     },
     {
       "source": "/xmas/",
-      "destination": "/xmas/index.html"
+      "destination": "/xmas/index.html",
+      "permanent": false
     }
   ]
 }
