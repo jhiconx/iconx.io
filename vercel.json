@@ -6,5 +6,15 @@
     "api/admin-leads.js": {
       "maxDuration": 10
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/xmas",
+      "destination": "/xmas/index.html"
+    },
+    {
+      "source": "/xmas/",
+      "destination": "/xmas/index.html"
+    }
+  ]
 }
