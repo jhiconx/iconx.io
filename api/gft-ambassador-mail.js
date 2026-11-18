@@ -4,7 +4,7 @@ const RECIPIENTS=['rcramer@iconx.io','support@gftrewards.com'];
 const validOrigin=origin=>!origin||/^https:\/\/gft-rewards-store-ambassadors(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(origin);
 const clean=(value,max)=>String(value??'').trim().slice(0,max+1);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-module.exports=async function handler(req,res){
+export default async function handler(req,res){
   res.setHeader('Cache-Control','no-store');
   const origin=String(req.headers.origin||'');
   if(origin&&!validOrigin(origin))return res.status(403).json({ok:false,error:'Origin not allowed'});
