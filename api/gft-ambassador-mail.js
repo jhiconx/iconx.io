@@ -68,6 +68,34 @@ function welcomeEmail(fullName,language){
   return {subject:c.subject,html,text:plain};
 }
 
+async function sendWelcome(d){
+  try {
+    const confirmation=welcomeEmail(d.full_name,d.language);
+    const ack=await fetch('https://api.resend.com/emails',{
+      method:'POST',
+      headers:{
+        Authorization:'Bearer '+process.env.RESEND_API_KEY,
+        'Content-Type':'application/json',
+        'Idempotency-Key':'gft-retail-confirmation/'+d.id
+      },
+      body:JSON.stringify({
+        from:WELCOME_FROM,to:[d.email],reply_to:'rcramer@iconx.io',
+        subject:confirmation.subject,html:confirmation.html,text:confirmation.text
+      }),
+      signal:AbortSignal.timeout(9500)
+    });
+    const data=await ack.json().catch(()=>({}));
+    if(ack.ok&&data.id)return {accepted:true,id:data.id,reason:null};
+    const reason=String(data.message||data.name||('HTTP '+ack.status)).slice(0,180);
+    console.error('GFT retail applicant confirmation rejected',ack.status,reason);
+    return {accepted:false,id:null,reason};
+  }catch(error){
+    const reason=error instanceof Error?error.name:'transport';
+    console.error('GFT retail applicant confirmation unavailable',reason);
+    return {accepted:false,id:null,reason};
+  }
+}
+
 const validOrigin=origin=>!origin||/^https:\/\/gft-rewards-store-ambassadors(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(origin);
 const clean=(value,max)=>String(value??'').trim().slice(0,max+1);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -127,9 +155,18 @@ export default async function handler(req,res){
     const check=await fetch(u,{signal:AbortSignal.timeout(8000)});
     const evidence=await check.json().catch(()=>({}));
     if(!check.ok||evidence.verified!==true)return res.status(403).json({ok:false,error:'Application not verified'});
+    if(body.mode==='confirmation_only'&&evidence.recruitingSent!==true)
+      return res.status(403).json({ok:false,error:'Recruiting notification not yet accepted'});
   }catch{return res.status(503).json({ok:false,error:'Unable to verify application'});}
 
   if(!process.env.RESEND_API_KEY)return res.status(503).json({ok:false,error:'Email service is not configured'});
+  if(body.mode==='confirmation_only'){
+    const welcome=await sendWelcome(d);
+    return res.status(200).json({
+      ok:true,emailed:true,confirmationAccepted:welcome.accepted,
+      confirmationId:welcome.id,confirmationFailure:welcome.accepted?null:welcome.reason
+    });
+  }
   const fields=[
     ['Applicant',d.full_name],['Email',d.email],['Mobile',d.mobile],
     ['State',d.state],['Territory',d.territory],['City or ZIP',d.base_city],
@@ -153,38 +190,13 @@ export default async function handler(req,res){
     });
     const response=await mail.json().catch(()=>({}));
     if(!mail.ok||!response.id){console.error('GFT Resend failed',mail.status);return res.status(502).json({ok:false,error:'Email delivery not accepted'});}
-    // The internal recruiting message succeeded. Attempt the separate applicant confirmation
-    // with its own idempotency key. A sender-domain failure must not undo recruiting delivery.
-    let confirmationAccepted=false,confirmationId=null,confirmationFailure=null;
-    try {
-      const confirmation=welcomeEmail(d.full_name,d.language);
-      const ack=await fetch('https://api.resend.com/emails',{
-        method:'POST',
-        headers:{
-          Authorization:'Bearer '+process.env.RESEND_API_KEY,
-          'Content-Type':'application/json',
-          'Idempotency-Key':'gft-retail-confirmation/'+d.id
-        },
-        body:JSON.stringify({
-          from:WELCOME_FROM,to:[d.email],reply_to:'rcramer@iconx.io',
-          subject:confirmation.subject,html:confirmation.html,text:confirmation.text
-        }),
-        signal:AbortSignal.timeout(9500)
-      });
-      const ackData=await ack.json().catch(()=>({}));
-      confirmationAccepted=ack.ok&&Boolean(ackData.id);
-      if(confirmationAccepted)confirmationId=ackData.id;
-      else{
-        confirmationFailure=String(ackData.name||ackData.message||('HTTP '+ack.status)).slice(0,140);
-        console.error('GFT retail applicant confirmation rejected',ack.status,confirmationFailure);
-      }
-    }catch(err){
-      confirmationFailure=err instanceof Error?err.name:'transport';
-      console.error('GFT retail applicant confirmation unavailable',confirmationFailure);
-    }
+    // Recruiting has been accepted; send a separately tracked applicant acknowledgment.
+    const welcome=await sendWelcome(d);
     return res.status(200).json({
-      ok:true,emailed:true,confirmationAccepted,confirmationId,
-      confirmationFailure:confirmationAccepted?null:confirmationFailure
+      ok:true,emailed:true,
+      confirmationAccepted:welcome.accepted,
+      confirmationId:welcome.id,
+      confirmationFailure:welcome.accepted?null:welcome.reason
     });
   }catch(error){console.error('GFT Resend unavailable',error instanceof Error?error.name:'unknown');return res.status(503).json({ok:false,error:'Email service unavailable'});}
 };
