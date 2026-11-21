@@ -79,8 +79,22 @@ export default async function handler(req,res){
   res.setHeader('Access-Control-Allow-Methods','POST,GET,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers','Content-Type');
   if(req.method==='OPTIONS')return res.status(204).end();
-  if(req.method==='GET'&&req.query?.health==='1')
+  if(req.method==='GET'&&req.query?.health==='1'){
+    if(req.query?.sender==='1'){
+      if(!process.env.RESEND_API_KEY)return res.status(503).json({ok:false,verified:false,error:'sender config unavailable'});
+      try{
+        const verify=await fetch('https://api.resend.com/domains?limit=100',{
+          headers:{Authorization:'Bearer '+process.env.RESEND_API_KEY,'User-Agent':'Iconx-GFTRetail/1.0'},
+          signal:AbortSignal.timeout(8000)
+        });
+        if(!verify.ok)return res.status(200).json({ok:true,checkAvailable:false,providerHttp:verify.status});
+        const result=await verify.json();
+        const root=(result.data||[]).find(d=>String(d.name||'').toLowerCase()==='iconx.io');
+        return res.status(200).json({ok:true,checkAvailable:true,rootDomainVerified:root?.status==='verified',rootDomainStatus:root?.status||'not-listed',sendingEnabled:root?.capabilities?.sending==='enabled',hasMore:Boolean(result.has_more)});
+      }catch{return res.status(200).json({ok:true,checkAvailable:false,error:'provider check unavailable'});}
+    }
     return res.status(200).json({ok:true,ready:Boolean(process.env.RESEND_API_KEY),senderConfigured:Boolean(process.env.CONTACT_FROM_EMAIL||process.env.SAMPLE_FROM_EMAIL),transport:'Resend'});
+  }
   if(req.method!=='POST')return res.status(405).json({ok:false,error:'Method not allowed'});
   if(Number(req.headers['content-length']||0)>6500)return res.status(413).json({ok:false,error:'Request too large'});
   let body=req.body;
