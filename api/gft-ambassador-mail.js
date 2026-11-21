@@ -3,6 +3,7 @@
 const RECIPIENTS=['rcramer@iconx.io','support@gftrewards.com'];
 
 const WELCOME_FROM='GFT Retail Solutions <GFTAmbassadors@iconx.io>';
+const RECRUITING_FROM='GFT Ambassadors Application Iconx Support <GFTAmbassadors@iconx.io>';
 function welcomeEmail(fullName,language){
   const first=esc(String(fullName||'there').trim().split(/\s+/)[0]||'there');
   const es=language==='es';
@@ -160,6 +161,7 @@ export default async function handler(req,res){
   }catch{return res.status(503).json({ok:false,error:'Unable to verify application'});}
 
   if(!process.env.RESEND_API_KEY)return res.status(503).json({ok:false,error:'Email service is not configured'});
+  // Keep the standalone GFT recruiting sender on the verified iconx.io domain, not the Sampling For Good sender.
   if(body.mode==='confirmation_only'){
     const welcome=await sendWelcome(d);
     return res.status(200).json({
@@ -167,6 +169,7 @@ export default async function handler(req,res){
       confirmationId:welcome.id,confirmationFailure:welcome.accepted?null:welcome.reason
     });
   }
+  if(!process.env.GFT_RETAIL_RESEND_API_KEY)return res.status(503).json({ok:false,error:'GFT retail email sender is not configured'});
   const fields=[
     ['Applicant',d.full_name],['Email',d.email],['Mobile',d.mobile],
     ['State',d.state],['Territory',d.territory],['City or ZIP',d.base_city],
@@ -178,10 +181,10 @@ export default async function handler(req,res){
   try{
     const mail=await fetch('https://api.resend.com/emails',{
       method:'POST',
-      headers:{Authorization:'Bearer '+process.env.RESEND_API_KEY,
+      headers:{Authorization:'Bearer '+process.env.GFT_RETAIL_RESEND_API_KEY,
         'Content-Type':'application/json','Idempotency-Key':'gft-store-ambassador/'+d.id},
       body:JSON.stringify({
-        from:process.env.CONTACT_FROM_EMAIL||process.env.SAMPLE_FROM_EMAIL||'Iconx.io Website <website@iconx.io>',
+        from:RECRUITING_FROM,
         to:RECIPIENTS,reply_to:d.email,
         subject:'GFT Rewards Store Ambassador Application — '+d.territory+' — '+d.full_name,
         html
