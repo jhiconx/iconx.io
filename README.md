@@ -158,3 +158,14 @@ The private admin dashboard was not tagged.
 ## Top banner removal update
 
 Removed the temporary Florida Sample Program top-of-page burst banner from the homepage. The rest of the public site, Google tag, Nextdoor pixel, rules page, CHI section, and contact form remain in place.
+
+## GFT Retail Ambassador applicant confirmations
+
+The server-only route `api/gft-ambassador-mail.js` delivers two separate emails for valid GFT Retail Ambassador applications:
+
+- Recruiting notification: uses existing `RESEND_API_KEY`, addressed to `rcramer@iconx.io` and `support@gftrewards.com`.
+- Applicant confirmation: uses `GFT_RETAIL_RESEND_API_KEY` when configured, falling back to the original key otherwise. Sender: `GFT Retail Solutions <GFTAmbassadors@iconx.io>`.
+
+After adding or updating the dedicated key in Vercel Production environment variables, a **new production deployment** is required to load it. The project must not expose either key to the browser or source control. The GFT application and private confirmation-status tracking live in the dedicated Supabase Edge Function, not this project.
+
+This README update triggers a new Git-connected production build after the sender configuration was changed.
