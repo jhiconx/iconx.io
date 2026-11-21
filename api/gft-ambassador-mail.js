@@ -144,6 +144,8 @@ export default async function handler(req,res){
     mobile:clean(body.mobile,40),state:clean(body.state,2),
     territory:clean(body.territory,12),base_city:clean(body.base_city,120),
     retail_experience:clean(body.retail_experience,1600),
+    instagram_handle:clean(body.instagram_handle,31),
+    whatsapp_number:clean(body.whatsapp_number,40),
     submission_id:clean(body.submission_id,36),
     language:body.language==='es'?'es':'en'
   };
@@ -155,6 +157,8 @@ export default async function handler(req,res){
      (d.state==='MA'&&d.territory==='MA-50')||
      (d.state==='NY'&&d.territory==='NY-51'))&&
     d.base_city.length>=2&&d.base_city.length<=120&&d.retail_experience.length<=1600&&
+    d.instagram_handle.length<=31&&(!d.instagram_handle||/^@?[A-Za-z0-9._]{1,30}$/.test(d.instagram_handle))&&
+    d.whatsapp_number.length<=40&&(!d.whatsapp_number||(/^\+?[0-9() .-]+$/.test(d.whatsapp_number)&&d.whatsapp_number.replace(/\D/g,'').length>=7&&d.whatsapp_number.replace(/\D/g,'').length<=15))&&
     /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(d.submission_id);
   if(!valid)return res.status(400).json({ok:false,error:'Invalid application'});
   // Verify this is a saved GFT application before allowing a recipient-controlled welcome email.
@@ -184,6 +188,9 @@ export default async function handler(req,res){
     ['Applicant',d.full_name],['Email',d.email],['Mobile',d.mobile],
     ['State',d.state],['Territory',TERRITORY_NAMES[d.territory]+' ('+d.territory+')'],['City or ZIP',d.base_city],
     ['English and Spanish','Confirmed'],['GFT platform training','Acknowledged'],
+    ['Instagram handle',d.instagram_handle||'Not provided'],
+    ['WhatsApp number',d.whatsapp_number||'Not provided'],
+    ['Preferred language',d.language==='es'?'Español':'English'],
     ['Retail experience',d.retail_experience||'Not provided']
   ];
   const html='<h2>GFT Rewards Store Ambassador Application</h2><p>Field recruiting by Iconx.io · A Registered GFT Rewards Agency.</p><table cellpadding="8">'+
