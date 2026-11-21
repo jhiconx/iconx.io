@@ -11,6 +11,7 @@ const RECIPIENTS=[
 
 const WELCOME_FROM='GFT Retail Solutions <GFTAmbassadors@iconx.io>';
 const RECRUITING_FROM='GFT Ambassadors Application Iconx Support <GFTAmbassadors@iconx.io>';
+const TERRITORY_NAMES={"FL-41":"Fort Pierce / Treasure Coast","FL-42":"Merritt Island / Space Coast","FL-43":"LaBelle / Hendry County","FL-44":"Kissimmee Core","FL-45":"Winter Haven","FL-46":"Greater Tampa & Valrico","FL-47":"Bradenton Pair","FL-48":"South Florida — Broward / Miami-Dade Corridor","FL-49":"Daytona Beach","MA-50":"Dorchester / Boston","NY-51":"Canarsie / Brooklyn"};
 function welcomeEmail(fullName,language){
   const first=esc(String(fullName||'there').trim().split(/\s+/)[0]||'there');
   const es=language==='es';
@@ -150,7 +151,9 @@ export default async function handler(req,res){
     d.full_name.length>=2&&d.full_name.length<=150&&
     /^\S+@\S+\.\S+$/.test(d.email)&&d.email.length<=254&&
     d.mobile.replace(/\D/g,'').length>=7&&d.mobile.length<=40&&
-    ['FL','NY'].includes(d.state)&&new RegExp('^'+d.state+'-\\d{2}$').test(d.territory)&&
+    ((d.state==='FL'&&/^FL-4[1-9]$/.test(d.territory))||
+     (d.state==='MA'&&d.territory==='MA-50')||
+     (d.state==='NY'&&d.territory==='NY-51'))&&
     d.base_city.length>=2&&d.base_city.length<=120&&d.retail_experience.length<=1600&&
     /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(d.submission_id);
   if(!valid)return res.status(400).json({ok:false,error:'Invalid application'});
@@ -179,7 +182,7 @@ export default async function handler(req,res){
   if(!process.env.GFT_RETAIL_RESEND_API_KEY)return res.status(503).json({ok:false,error:'GFT retail email sender is not configured'});
   const fields=[
     ['Applicant',d.full_name],['Email',d.email],['Mobile',d.mobile],
-    ['State',d.state],['Territory',d.territory],['City or ZIP',d.base_city],
+    ['State',d.state],['Territory',TERRITORY_NAMES[d.territory]+' ('+d.territory+')'],['City or ZIP',d.base_city],
     ['English and Spanish','Confirmed'],['GFT platform training','Acknowledged'],
     ['Retail experience',d.retail_experience||'Not provided']
   ];
@@ -193,7 +196,7 @@ export default async function handler(req,res){
       body:JSON.stringify({
         from:RECRUITING_FROM,
         to:RECIPIENTS,reply_to:d.email,
-        subject:'GFT Rewards Store Ambassador Application — '+d.territory+' — '+d.full_name,
+        subject:'GFT Rewards Store Ambassador Application — '+TERRITORY_NAMES[d.territory]+' — '+d.full_name,
         html
       }),
       signal:AbortSignal.timeout(9500)
