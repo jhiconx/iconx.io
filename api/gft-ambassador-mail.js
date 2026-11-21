@@ -1,6 +1,13 @@
 // Server-only Resend relay for the independent GFT Rewards Store Ambassador site.
 // Fixed recipients; never accepts arbitrary destination addresses or HTML from callers.
-const RECIPIENTS=['rcramer@iconx.io','support@gftrewards.com'];
+const RECIPIENTS=[
+  'rcramer@iconx.io',
+  'support@gftrewards.com',
+  'kolten.hyatt@gftrewards.com',
+  'avery.walker@gftrewards.com',
+  'catalina.barrantes@gftrewards.com',
+  'pwissenburg@gftrewards.com'
+];
 
 const WELCOME_FROM='GFT Retail Solutions <GFTAmbassadors@iconx.io>';
 const RECRUITING_FROM='GFT Ambassadors Application Iconx Support <GFTAmbassadors@iconx.io>';
